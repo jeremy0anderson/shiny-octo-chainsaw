@@ -1,4 +1,4 @@
-# shiny-octo-chainsaw
+# Assassination between two Kingdoms
 # Requirements: 
 * Use Node.js and Express.js to create a RESTful API.
 * Use Handlebars.js as the templating engine.
