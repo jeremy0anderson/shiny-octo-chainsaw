@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Host, Player, King } = require('../../models');
 
+
 router.get('/', (req, res) => {
   
 })
