@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Host } = require('../../models');
+const bcrypt = require('bcrypt');
 
 // GET /api/hosts
 router.route('/')
@@ -12,20 +13,46 @@ router.route('/')
           console.log(err);
           res.status(500).json(err);
         });
-    })
-    .post((req, res) => {
-      Host.create({
-            username: req.body.username,
-            email: req.body.email,
-            password: req.body.password
-          })
-          .then(dbHostData => res.json(dbHostData))
-          .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
+    });
+    router.post('/signup',async(req, res) => {
+          const salt = await bcrypt.genSalt(10);
+          let hashedPw = await bcrypt.hash(req.body.password, salt);
+          const user = Host.findOne({
+                where: {
+                      username: req.body.username
+                }
+          }).then(hostData => {
+                if (!hostData) {
+                      Host.create({
+                                username: req.body.username, email: req.body.email, password: hashedPw
+                          })
+                          .then(dbHostData => res.json(dbHostData))
+                          .catch(err => {
+                                console.log(err);
+                                res.status(500).json(err);
+                          });
+                } else {
+                      res.status(401).json({error: "User Already Exists"});
+                }
           });
     });
-
+    router.post('/login',async (req, res)=>{
+          const user = await Host.findOne({
+                where: {
+                      username: req.body.username
+                }
+          });
+                if (user) {
+                      const validPass = await bcrypt.compare(req.body.password, user.toJSON().password);
+                      if (validPass) {
+                            res.status(200).json({message: "Valid Password"})
+                      } else {
+                            res.status(400).json({error: "invalid password"})
+                      }
+                } else {
+                      res.status(401).json({error: "User does not exist"});
+                }
+    });
 // GET /api/hosts/1
 router.route('/:id')
     .get((req, res) => {
