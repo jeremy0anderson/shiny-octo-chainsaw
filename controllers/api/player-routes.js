@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   Player.create({
     username: req.body.username,
-    game_code: req.body.game_code
+    //game_code: req.body.game_code
   })
     .then(dbPlayerData => res.json(dbPlayerData))
     .catch(err => {

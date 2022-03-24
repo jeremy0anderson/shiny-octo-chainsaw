@@ -1,3 +1,4 @@
 const Player = require('./Player');
+const Host = require('./Host');
 
-module.exports = { Player };
+module.exports = { Player, Host };
