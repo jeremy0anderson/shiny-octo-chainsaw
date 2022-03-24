@@ -42,8 +42,7 @@
 /* utility classes */
 
 
-
-/* navbar */
+/* navbar - displays tablet and bigger */
 #navigation-img {
     width: 400px;
     margin: 15px;
@@ -63,7 +62,7 @@
     background-color: var(--black) !important;
     color: var(--blue) !important;
 }
-/* navbar */
+/* navbar - displays tablet and bigger */
 
 
 /* title and buttons column */
@@ -74,6 +73,10 @@
 #player-form {
     margin-top: 25px !important;
     opacity: 90% !important;
+}
+
+button#submit {
+    font-family: 'Merriweather', serif;
 }
 
 #homepage-buttons {
@@ -126,10 +129,9 @@ footer {
         z-index: 999;
     }
 
-    #start {
-        padding: 0 !important;
-        left: 0 !important;
-        position: sticky !important;
-        z-index: 999 !important;
+    #right-column {
+        height: 78vh;
+        overflow: scroll;
+        padding: 0%;
     }
 }
