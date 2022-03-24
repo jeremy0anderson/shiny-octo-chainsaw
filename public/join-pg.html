@@ -6,64 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="./css/homepage.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Merriweather:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css"/>
 
-    <link rel="icon" type="image/x-icon" href="./images/crown.png">
-    <title>Assassination</title>
+    <link rel="icon" type="image/x-icon" href="./assets/images/crown.png">
+    <title>Assassination: Join A Game</title>
 </head>
 <body class="background-black">
-    <nav class="navbar background-black is-hidden-mobile" id="navigation">
-        <img src="./images/assassination_navbar.png" class="" id="navigation-img">
+    <nav class="navbar background-black is-fixed-top is-hidden-mobile" id="navigation">
+        <img src="./assets/images/assassination_navbar.png" alt="Assassination: Between Two Kingdoms" class="" id="navigation-img">
 
         <a href="#game-instructions" class="navbar-item navbar-end is-4 text-white mt-6" id="nav-game">
             The Game
         </a>
-        <a href="#role-explanation" class="navbar-item is-4 text-white mt-6 ml-5" id="nav-role">
+        <a href="#role-explanation" class="navbar-item is-4 text-white mt-6 ml-5 mr-4" id="nav-role">
             The Role Cards
+        </a>
+        <a href="./homepage.html" class="navbar-item is-4 text-white back-btn mt-6 mr-4" id="">
+            Back
         </a>
     </nav>
     <section class="columns" id="homepage">
         <!-- Column with Title and Buttons -->
         <section class="column is-12-mobile is-4-tablet" id="start">
-            <img src="./images/assassination_banner.png" alt="Assassination: Between Two Kingdoms... The king is dead, who will be the next king of the kingdom?" class="is-hidden-tablet">
-            <section class="column background-black pl-6 pr-6">
-                <button class="button is-fullwidth mb-3 background-red text-white" id="host">
-                    Host A Game
-                </button>
-                <button class="button is-fullwidth background-blue text-white" id="player">
-                    Join A Game
-                </button>
-            </section>
+            <img src="./assets/images/assassination_banner.png" alt="Assassination: Between Two Kingdoms... The king is dead, who will be the next king of the kingdom?" class="is-hidden-tablet">
+            
+            <form id="player-form" class="box background-blue m-4">
+                <label for="name" class="label text-white mt-1 mb-1">Player's Name</label>
+                <input name="name" id="name" type="text" autofocus="true" class="input mt-1 mb-1" />
+                <label for="game-code" class="label text-white mt-1 mb-1">Player's Name</label>
+                <input name="game-code" id="game-code" type="text" autofocus="true" class="input mt-1 mb-1" />
+                <button type="submit" id="submit" class="button background-red text-white mt-1 mb-1">Join Game</button>
+            </form>
         </section>
 
         <!-- Column with Story, The Game, The Role Cards -->
         <section class="column is-12-mobile is-8-tablet text-white" id="right-column">
             <div id="story">
-                <p class="block">
-                    News spread fast of the unexpected passing of the King. The King had never declared which of his two children would become the next to sit on the throne. The people were split and tempers flared quickly…
-                </p>
-                <p class="block">
-                    To prevent a civil war the King's children decided to split the kingdom. They would exchange subjects between the two kingdoms for a short time, questioning them and testing their loyalties, until they sealed off the kingdoms for good.
-                </p>
-                <p class="block">
-                    Not satisfied with only half the kingdom, both siblings went to the King’s craigslist and hired assassins to kill the other so that they could have the full kingdom to themselves.  
-                </p>
-                <p class="block">
-                    Thus the board was set…
-                </p>
-                <p class="block">    
-                    They went forth with their exchanges hoping to sneak their Assassin into each other’s kingdoms to do their work so they could have the kingdom to themselves.
-                </p>
+                <h2 class="subtitle is-5 has-text-right text-white mb-5">
+                    The <span class="text-red">king</span> is dead, who will be the next <span class="text-blue">king</span> of the kingdom?
+                </h2>
+                <h2 class="subtitle is-5 has-text-right text-white mb-5">
+                    Join the game to find out...
+                </h2>
             </div>
 
-            <div>
+            <div id="game-instructions">
                 <h3 class="text-red">
                     THE GAME
                 </h3>
-                <ol id="game-instructions">
+                <ol>
                     <li>
                         Each player will receive a role card (King, Guard, Assassin, and more!) with information about their character
                     </li>
@@ -85,11 +79,11 @@
                 </ol>
             </div>
 
-            <div>
+            <div id="role-explanation">
                 <h3 class="text-blue">
                     THE ROLE CARDS
                 </h3>
-                <ul id="role-explanation">
+                <ul>
                     <li>
                         <b>Role Name:</b> Simply, the name of your role. Keep this a secret to start, unless you are the King.
                     </li>
@@ -108,13 +102,14 @@
                 </ul>
             </div>
 
-            <p class="block">
-                Ready to play?
-            </p>
+            <div class="roles">
+                List of Roles:
+            </div>
         </section>
     </section>
     <footer class="text-white has-text-centered p-5">
-        Built by Aaron Jones, Rachel Marriott, Nicholas Tatom, Jeremy Anderson, Ilan Timerman, and Lilly Leiran
+        Built by Aaron Jones, Rachel Marriott, Jeremy Anderson, Ilan Timerman, and Lilly Leiran
     </footer>
+    <script src="./assets/js/homepage.js"></script>
 </body>
 </html>
