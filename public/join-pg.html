@@ -26,7 +26,8 @@
                 <a href="#role-explanation" class="navbar-item is-4 text-white mt-6 ml-5 mr-4" id="nav-role">
                     The Role Cards
                 </a>
-                <a href="./homepage.html" class="navbar-item is-4 text-white back-btn mt-6 mr-4" id="">
+                <!-- backBtn in JS href="./homepage.html" -->
+                <a class="navbar-item is-4 text-white back-btn mt-6 mr-4" id="back">
                     Back
                 </a>
             </nav>
@@ -40,8 +41,10 @@
         <!-- Column with Title and Buttons -->
         <section class="column is-12-mobile is-4-tablet" id="start">
             <form id="player-form" class="box background-blue m-4">
+                <!-- nameInputEl in JS -->
                 <label for="name" class="label text-white mt-1 mb-1">Player's Name</label>
                 <input name="name" id="name" type="text" autofocus="true" class="input mt-1 mb-1" />
+                <!-- gameCodeInputEl in JS -->
                 <label for="game-code" class="label text-white mt-1 mb-1">Game Code</label>
                 <input name="game-code" id="game-code" type="text" autofocus="true" class="input mt-1 mb-1" />
                 <button type="submit" id="submit" class="button background-red text-white mt-1 mb-1">Join Game</button>
@@ -116,6 +119,6 @@
     <footer class="text-white has-text-centered p-5">
         Built by Aaron Jones, Rachel Marriott, Jeremy Anderson, Ilan Timerman, and Lilly Leiran
     </footer>
-    <script src="./assets/js/homepage.js"></script>
+    <script src="./assets/js/join-pg.js"></script>
 </body>
 </html>
