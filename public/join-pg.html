@@ -40,7 +40,7 @@
     <section class="columns" id="page">
         <!-- Column with Title and Buttons -->
         <section class="column is-12-mobile is-4-tablet" id="start">
-            <form id="player-form" class="box background-blue m-4">
+            <form id="player-form" class="box background-blue m-4" method="POST" action="/api/">
                 <!-- nameInputEl in JS -->
                 <label for="name" class="label text-white mt-1 mb-1">Player's Name</label>
                 <input name="name" id="name" type="text" autofocus="true" class="input mt-1 mb-1" />
@@ -103,7 +103,7 @@
                         <b>Ability/Curse:</b> Defines special conditions of your role. For an example of an ability, the assassin can kill the King they are not loyal to if the guard is absent or distracted. For an example of a curse, the guards must always report their true loyalty if asked.
                     </li>
                     <li>
-                        <b>Winning Conditions:</b> How do you win? This is your answer. Each player has at least 1 but possibly 2 ways to win. This is your objective.
+                        <b>Winning Conditions:</b> How do you win? This is your answer. Each player has at least 1 but possibly 2 winning conditions. This is your objective. You must meet both objectives in order to win.
                     </li>
                     <li>
                         <b>Footnote:</b> Finally, at the bottom of the card there may be a note with additional conditions for your character.
@@ -113,6 +113,64 @@
 
             <div class="roles">
                 List of Roles:
+                <table>
+                    <tr>
+                        <th>Role</th>
+                        <th>Loyalty</th>
+                        <th>Ability/Condition</th>
+                        <th>Win Condition 1</th>
+                        <th>Win Condition 2</th>
+                        <th>Footnote</th>
+                    </tr>
+                    <tr>
+                        <td>Red King</td>
+                        <td>Red King</td>
+                        <td>Decide who gets exported to the other Kingdom</td>
+                        <td>Survive Yourself</td>
+                        <td>Kill the opposing King</td>
+                        <td>The King Cannot Move Rooms</td>
+                    </tr>
+                    <tr>
+                        <td>Blue King</td>
+                        <td>Blue King</td>
+                        <td>Decide who gets exported to the other Kingdom</td>
+                        <td>Survive Yourself</td>
+                        <td>Kill the opposing King</td>
+                        <td>The King Cannot Move Rooms</td>
+                    </tr>
+                    <tr>
+                        <td>Guard</td>
+                        <td>Red King</td>
+                        <td>Protect the Red King from the Assassin</td>
+                        <td>Your King Survives</td>
+                        <td>You end in the same room as the Red King</td>
+                        <td>The Guard can only stop 1 Assassin</td>
+                    </tr>
+                    <tr>
+                        <td>Guard</td>
+                        <td>Blue King</td>
+                        <td>Protect the Blue King from the Assassin</td>
+                        <td>Your King Survives</td>
+                        <td>You end in the same room as the Blue King</td>
+                        <td>The Guard can only stop 1 Assassin</td>
+                    </tr>
+                    <tr>
+                        <td>Assassin</td>
+                        <td>Red King</td>
+                        <td>Decide who gets exported to the other Kingdom</td>
+                        <td>Survive Yourself</td>
+                        <td>Kill the opposing King</td>
+                        <td>The King Cannot Move Rooms</td>
+                    </tr>
+                    <tr>
+                        <td>Blue King</td>
+                        <td>Blue King</td>
+                        <td>Decide who gets exported to the other Kingdom</td>
+                        <td>Survive Yourself</td>
+                        <td>Kill the opposing King</td>
+                        <td>The King Cannot Move Rooms</td>
+                    </tr>
+                  </table>
             </div>
         </section>
     </section>
