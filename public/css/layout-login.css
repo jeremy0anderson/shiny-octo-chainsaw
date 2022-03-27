@@ -1,0 +1,102 @@
+/* universal selector */
+/* removes default margin and padding from everything */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+}
+
+:root {
+    --black: #1E1E24;
+    --white: #F7F7FF;
+    --blue: #2274A5;
+    --red: #A92335;
+}
+/* universal selector */
+
+/* utility classes */
+.background-black {
+    background-color: var(--black) !important;
+}
+
+.background-red {
+    background-color: var(--red);
+}
+
+.background-blue {
+    background-color: var(--blue);
+}
+
+.text-white {
+    color: var(--white) !important;
+}
+
+.text-red {
+    color: var(--red) !important;
+}
+
+.text-blue {
+    color: var(--blue) !important;
+}
+/* utility classes */
+
+
+/* navbar - displays tablet and bigger */
+
+#navigation-img {
+    width: 400px;
+    margin: 15px;
+}
+
+#nav-game:hover {
+    background-color: var(--black) !important;
+    color: var(--red) !important;
+}
+
+#nav-role:hover {
+    background-color: var(--black) !important;
+    color: var(--blue) !important;
+}
+
+.back-btn:hover {
+    background-color: var(--black) !important;
+    color: var(--blue) !important;
+}
+/* navbar - displays tablet and bigger */
+
+/* login hero */
+
+#login-crown {
+    max-height: 50px;
+}
+
+.hero p a {
+    color: var(--white);
+}
+
+/* login hero */
+
+
+/* footer style */
+footer {
+    font-size: 12px;
+}
+/* footer style */
+
+@media screen and (min-width: 768px) {
+    /* applies to screens above 768px */
+
+    #navigation {
+        top: 0;
+        position: sticky;
+        position: -webkit-sticky;
+        z-index: 999;
+    }
+
+    #right-column {
+        height: 78vh;
+        overflow: scroll;
+        padding: 0%;
+    }
+}

@@ -8,7 +8,7 @@ const gameRoutes = require('./game-routes');
 router.use('/players', playerRoutes);
 router.use('/hosts', hostRoutes);
 router.use('/kings', kingRoutes);
-router.use('/games', gameRoutes);
+router.use('/game', gameRoutes);
 
 
 module.exports = router;
