@@ -27,7 +27,8 @@ app.use(session(
       secret: process.env.SESSION_SECRET,
       path: "/",
       cookie:{
-        maxAge: 60000,
+          //set to 5 minutes for testing
+        maxAge: 1000 * 60 * 5,
       },
       store: new SequelizeStore({
         db: sequelize
