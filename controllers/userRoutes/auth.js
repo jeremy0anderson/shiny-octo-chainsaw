@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {Host} = require('../../models');
+const bcrypt = require('bcrypt');
 // configure objects to use with conditional rendering
 function redirectUser(req, res, next){
     if (req.session.user){
@@ -52,8 +53,7 @@ router.post("/signin",(req, res)=>{
         if(!hostData){
             res.status(400)
         }
-        let validPw = hostData.checkPassword(req.body.password);
-        if (validPw) {
+        if (hostData.checkPassword(req.body.password)) {
             req.session.user = hostData.username;
             // res.locals.user = req.session.user;
             res.redirect('/dashboard');

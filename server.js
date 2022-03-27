@@ -1,8 +1,8 @@
 require('dotenv').config();
 //use express, routes, db config, handlebars
 const express = require('express'),
-    routes = require('./controllers');
-app = express(),
+    routes = require('./controllers'),
+    app = express(),
     exphbs = require('express-handlebars'),
     session = require('express-session'),
     sequelize = require('./config/connection');
