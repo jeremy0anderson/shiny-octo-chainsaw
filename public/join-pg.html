@@ -39,7 +39,7 @@
 
     <section class="columns" id="page">
         <!-- Column with Title and Buttons -->
-        <section class="column is-12-mobile is-4-tablet" id="start">
+        <section class="column is-12-mobile is-3-tablet" id="left-column">
             <form id="player-form" class="box background-blue m-4" method="POST" action="/api/">
                 <!-- nameInputEl in JS -->
                 <label for="name" class="label text-white mt-1 mb-1">Player's Name</label>
@@ -52,7 +52,7 @@
         </section>
 
         <!-- Column with Story, The Game, The Role Cards -->
-        <section class="column is-12-mobile is-8-tablet text-white pr-5"" id="right-column">
+        <section class="column is-12-mobile is-9-tablet text-white pr-5"" id="right-column">
             <div id="story">
                 <h2 class="subtitle is-5 has-text-right text-white mb-5 pr-5"">
                     The <span class="text-red">king</span> is dead, who will be the next <span class="text-blue">king</span> of the kingdom?
@@ -112,63 +112,79 @@
             </div>
 
             <div class="roles">
-                List of Roles:
+                <h3 class="text-red">Core Roles</h3>
                 <table>
                     <tr>
-                        <th>Role</th>
-                        <th>Loyalty</th>
-                        <th>Ability/Condition</th>
-                        <th>Win Condition 1</th>
-                        <th>Win Condition 2</th>
-                        <th>Footnote</th>
+                        <th class="text-white">Role</th>
+                        <th class="text-white">Loyalty</th>
+                        <th class="text-white">Ability/Condition</th>
+                        <th class="text-white">Win Condition 1</th>
+                        <th class="text-white">Win Condition 2</th>
+                        <th class="text-white">Footnote</th>
                     </tr>
                     <tr>
                         <td>Red King</td>
-                        <td>Red King</td>
-                        <td>Decide who gets exported to the other Kingdom</td>
-                        <td>Survive Yourself</td>
-                        <td>Kill the opposing King</td>
-                        <td>The King Cannot Move Rooms</td>
+                        <td>Red</td>
+                        <td>Banish subjects to the Blue Court</td>
+                        <td>Survive</td>
+                        <td>Kill the Blue King</td>
+                        <td>Cannot leave the Red court</td>
                     </tr>
                     <tr>
                         <td>Blue King</td>
-                        <td>Blue King</td>
-                        <td>Decide who gets exported to the other Kingdom</td>
-                        <td>Survive Yourself</td>
-                        <td>Kill the opposing King</td>
-                        <td>The King Cannot Move Rooms</td>
+                        <td>Blue</td>
+                        <td>Banish subjects to the Red Court</td>
+                        <td>Survive</td>
+                        <td>Kill the Red King</td>
+                        <td>Cannot leave the Blue court</td>
                     </tr>
                     <tr>
                         <td>Guard</td>
-                        <td>Red King</td>
+                        <td>Red</td>
                         <td>Protect the Red King from the Assassin</td>
-                        <td>Your King Survives</td>
-                        <td>You end in the same room as the Red King</td>
-                        <td>The Guard can only stop 1 Assassin</td>
+                        <td>The Red King Survives</td>
+                        <td>Remain in the Red Court</td>
+                        <td>The Guard can stop 1 Assassin</td>
                     </tr>
                     <tr>
                         <td>Guard</td>
-                        <td>Blue King</td>
+                        <td>Blue</td>
                         <td>Protect the Blue King from the Assassin</td>
-                        <td>Your King Survives</td>
-                        <td>You end in the same room as the Blue King</td>
-                        <td>The Guard can only stop 1 Assassin</td>
+                        <td>The Blue King Survives</td>
+                        <td>Remain in the Blue court</td>
+                        <td>The Guard can stop 1 Assassin</td>
                     </tr>
                     <tr>
                         <td>Assassin</td>
-                        <td>Red King</td>
-                        <td>Decide who gets exported to the other Kingdom</td>
-                        <td>Survive Yourself</td>
-                        <td>Kill the opposing King</td>
-                        <td>The King Cannot Move Rooms</td>
+                        <td>Red</td>
+                        <td>Assassinate the Blue King if the Guard is Absent</td>
+                        <td>The Red King Survives</td>
+                        <td>Assassinate the Blue King</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>Blue King</td>
-                        <td>Blue King</td>
-                        <td>Decide who gets exported to the other Kingdom</td>
-                        <td>Survive Yourself</td>
-                        <td>Kill the opposing King</td>
-                        <td>The King Cannot Move Rooms</td>
+                        <td>Assassin</td>
+                        <td>Blue</td>
+                        <td>Assassinate the Red King if the Guard is Absent</td>
+                        <td>The Blue King Survives</td>
+                        <td>Assassinate the Red King</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Successor</td>
+                        <td>Grey</td>
+                        <td>Know the Identity of Both Assassins</td>
+                        <td>Both Kings get Assassinated</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>The Queen Mother</td>
+                        <td>Grey</td>
+                        <td>Know the Identity of Both Assassins</td>
+                        <td>Both Kings Survive</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                   </table>
             </div>
