@@ -113,6 +113,18 @@ h3 {
 }
 /* story, game, and role card column */
 
+/* login page hero */
+
+#login-crown {
+    max-height: 50px;
+}
+
+.hero p a {
+    color: var(--white);
+}
+
+/* login page hero */
+
 /* footer style */
 footer {
     font-size: 12px;
