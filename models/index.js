@@ -34,4 +34,4 @@ Role.belongsTo(King, {
   foreignKey: 'king_id'
 });
 
-module.exports = { Player, Host, Role };
+module.exports = { Player, Host, Role, Game, King };
