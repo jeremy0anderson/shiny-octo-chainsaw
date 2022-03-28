@@ -13,7 +13,7 @@ Role.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -24,10 +24,10 @@ Role.init(
     ability: {
       type: DataTypes.STRING,
     },
-    win_1: {
+    win1: {
       type: DataTypes.STRING,
     },
-    win_2: {
+    win2: {
       type: DataTypes.STRING
     },
     king_id: {

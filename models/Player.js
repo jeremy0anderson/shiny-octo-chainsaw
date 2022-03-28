@@ -13,15 +13,15 @@ Player.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    game_id: {
+    game_code: {
       type: DataTypes.INTEGER,
       references: {
         model: 'game',
-        key: 'id'
+        key: 'game_code'
       }
     },
     role_id: {

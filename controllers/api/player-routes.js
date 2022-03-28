@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Player } = require('../../models');
+const { Player, Game, Role } = require('../../models');
 
 // GET /api/players
 router.get('/', (req, res) => {
@@ -34,8 +34,8 @@ router.get('/:id', (req, res) => {
 // POST /api/players
 router.post('/', (req, res) => {
   Player.create({
-    player_name: req.body.name,
-    // game_id: req.body.game_code
+    username: req.body.name,
+    game_code: req.body.game_code
   })
     .then(dbPlayerData => res.json(dbPlayerData))
     .catch(err => {
