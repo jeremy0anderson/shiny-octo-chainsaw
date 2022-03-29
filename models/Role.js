@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Player model
-class Player extends Model {}
+// create our Role model
+class Role extends Model {}
 
 // define table columns and configuration
-Player.init(
+Role.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,21 +13,27 @@ Player.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    username: {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    loyalty: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    game_code: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'game',
-        key: 'game_code'
-      }
+    ability: {
+      type: DataTypes.STRING,
     },
-    role_id: {
+    win1: {
+      type: DataTypes.STRING,
+    },
+    win2: {
+      type: DataTypes.STRING
+    },
+    room_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'role',
+        model: 'room',
         key: 'id'
       }
     }
@@ -37,8 +43,8 @@ Player.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'player',
+    modelName: 'role'
   }
 );
 
-module.exports = Player;
+module.exports = Role;
