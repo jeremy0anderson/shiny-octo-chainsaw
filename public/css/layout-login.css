@@ -12,8 +12,6 @@
     --white: #F7F7FF;
     --blue: #2274A5;
     --red: #A92335;
-    --green: #588157;
-    --yellow: #E3B505;
 }
 /* universal selector */
 
@@ -30,14 +28,6 @@
     background-color: var(--blue);
 }
 
-.background-green {
-    background-color: var(--green);
-}
-
-.background-yellow {
-    background-color: var(--yellow);
-}
-
 .text-white {
     color: var(--white) !important;
 }
@@ -49,18 +39,11 @@
 .text-blue {
     color: var(--blue) !important;
 }
-
-.text-green {
-    color: var(--green) !important;
-}
-
-.text-yellow {
-    color: var(--yellow) !important;
-}
 /* utility classes */
 
 
 /* navbar - displays tablet and bigger */
+
 #navigation-img {
     width: 400px;
     margin: 15px;
@@ -82,54 +65,18 @@
 }
 /* navbar - displays tablet and bigger */
 
+/* login hero */
 
-/* title and buttons column */
-#host, #join, #submit {
-    border: none !important;
+#login-crown {
+    max-height: 50px;
 }
 
-#player-form {
-    margin-top: 25px !important;
-    opacity: 90% !important;
+.hero p a {
+    color: var(--white);
 }
 
-button#submit {
-    font-family: 'Merriweather', serif;
-}
+/* login hero */
 
-#homepage-buttons {
-    margin-top: 20px !important;
-    opacity: 90% !important;
-}
-/* title and buttons column */
-
-
-/* story, game, and role card column */
-#right-column {
-    padding: 25px;
-}
-
-h3 {
-    font-size: 30px;
-    font-family: 'MedievalSharp', cursive;
-    margin-top: 20px;
-}
-
-#story {
-    margin-left: 10px !important;
-    margin-right: 10px !important;
-}
-
-#game-instructions {
-    margin: 10px;
-    padding: 10px;
-}
-
-#role-explanation {
-    padding: 10px;
-    list-style: circle;
-}
-/* story, game, and role card column */
 
 /* footer style */
 footer {
