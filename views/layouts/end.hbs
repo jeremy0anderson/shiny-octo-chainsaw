@@ -30,6 +30,7 @@
         </div>
     </div>
     <script id="king-end-template" type="text/x-handlebars-template">
+    {{#if end }}
         <section class="hero is-fullheight-with-navbar">
             <div class="hero-body">
                 <div class="container has-text-centered">
@@ -37,16 +38,23 @@
                         <img src="{{winImg}}">
                         <h3 class="title has-text-white">{{winStatus}}</h3>
                         <hr class="login-hr">
-                        <p class="subtitle has-text-white">{{winCon1}}:  {{winConRes1}}</p>
-                        <p class="subtitle has-text-white">{{winCon2}}:  {{winConRes2}}</p>
+                        {{#if end.king}}
+                        <p class="subtitle has-text-white">{{end.king.assassinStatus}}</p>
+                        <p class="subtitle has-text-white">{{end.king.guardStatus}}</p>
+                        {{/if}}
+                        {{#if end.player}}
+                        <p class="subtitle has-text-white">{{end.player.winCon1}}:  {{end.player.winConRes1}}</p>
+                        <p class="subtitle has-text-white">{{end.player.winCon2}}:  {{end.player.winConRes2}}</p>
                         <hr class="login-hr">
-                        <p class="subtitle has-text-white">Blue king: {{blueKingStatus}}</p>
-                        <p class="subtitle has-text-white">Red king: {{redKingStatus}}</p>
+                        <p class="subtitle has-text-white">Blue king: {{end.player.blueKingStatus}}</p>
+                        <p class="subtitle has-text-white">Red king: {{end.player.redKingStatus}}</p>
+                        {{/if}}
                     </div>
                 </div>
             </div>
         </div>
         </section>
+         {{/if}}
         </script>
         <script async type="text/javascript" src="../js/bulma.js"></script>
 
