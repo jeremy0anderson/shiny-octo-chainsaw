@@ -13,6 +13,21 @@ router.get('/', (req, res) => {
     })
 })
 
+router.get('/player/end', (req, res) => {
+
+    res.render("./layouts/player-end", {
+        winStatus: test,
+        winCon1: test,
+        winCon2: test,
+        winConRes1: test,
+        winConRes2: test,
+        blueKingStatus: test,
+        redKingStatus: test,
+        winImg: ''
+    });
+  
+})
+
 router.post('/', (req, res) => {
 
 })
