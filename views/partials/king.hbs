@@ -1,0 +1,25 @@
+<section class="column background-black pl-6 pr-6" id="player-page-buttons">
+    <div class="box background-white" id="timer">
+        <h4 class="text-black" id="timer-label">
+            Round {{ game.number }} 
+        </h4>
+    </div>
+
+    <div class="box background-white has-text-centered">
+        <figure class="is-inline-block">
+            <img src="./images/crown.png">
+        </figure>
+        <h3 class="text-black mt-0">
+            {{ role.name }}
+        </h3>
+        <h4 class="text-black">
+            Ability: {{ role.ability }}
+        </h4>
+        <h4 class="text-black">
+            Win Conditions: {{ role.winCondition1 }}, {{ role.winCondition2 }}
+        </h4>
+        <h4 class="text-black">
+            Footnote: {{ role.footnote }}
+        </h4>
+    </div>
+</section>
