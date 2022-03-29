@@ -12,6 +12,8 @@
     --white: #F7F7FF;
     --blue: #2274A5;
     --red: #A92335;
+    --green: #588157;
+    --yellow: #E3B505;
 }
 /* universal selector */
 
@@ -28,6 +30,14 @@
     background-color: var(--blue);
 }
 
+.background-green {
+    background-color: var(--green);
+}
+
+.background-yellow {
+    background-color: var(--yellow);
+}
+
 .text-white {
     color: var(--white) !important;
 }
@@ -38,6 +48,14 @@
 
 .text-blue {
     color: var(--blue) !important;
+}
+
+.text-green {
+    color: var(--green) !important;
+}
+
+.text-yellow {
+    color: var(--yellow) !important;
 }
 /* utility classes */
 
