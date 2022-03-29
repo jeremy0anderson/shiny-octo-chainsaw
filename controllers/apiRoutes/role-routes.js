@@ -1,85 +1,83 @@
 const router = require('express').Router();
-const { Player, Game, Role } = require('../../models');
+const { Host, Player, Role, Room } = require('../../models');
 
-// GET /api/players
 router.get('/', (req, res) => {
-  Player.findAll()
-  .then(dbPlayerData => res.json(dbPlayerData))
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+  Role.findAll()
+    .then((dbRoleData) => res.json(dbRoleData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
-// GET /api/players/1
 router.get('/:id', (req, res) => {
-  Player.findOne({
+  Role.findOne({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-    .then(dbPlayerData => {
-      if (!dbPlayerData) {
+    .then((dbRoleData) => {
+      if (!dbRoleData) {
         res.status(404).json({ message: 'No player found with this id' });
         return;
       }
-      res.json(dbPlayerData);
+      res.json(dbRoleData);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-// POST /api/players
 router.post('/', (req, res) => {
-  Player.create({
-    username: req.body.name,
-    game_code: req.body.game_code
+  Role.create({
+    title: req.body.title,
+    loyalty: req.body.loyalty,
+    ability: req.body.ability,
+    win1: req.body.win1,
+    win2: req.body.win2,
+    room_id: req.body.room_id,
   })
-    .then(dbPlayerData => res.json(dbPlayerData))
-    .catch(err => {
+    .then((dbPlayerData) => res.json(dbPlayerData))
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-// PUT /api/players/1
 router.put('/:id', (req, res) => {
-  // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
-  Player.update(req.body, {
+  Role.update(req.body, {
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-    .then(dbPlayerData => {
+    .then((dbPlayerData) => {
       if (!dbPlayerData[0]) {
         res.status(404).json({ message: 'No player found with this id' });
         return;
       }
       res.json(dbPlayerData);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
-// DELETE /api/players/1
 router.delete('/:id', (req, res) => {
-  Player.destroy({
+  Role.destroy({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-    .then(dbPlayerData => {
+    .then((dbPlayerData) => {
       if (!dbPlayerData) {
         res.status(404).json({ message: 'No player found with this id' });
         return;
       }
       res.json(dbPlayerData);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
