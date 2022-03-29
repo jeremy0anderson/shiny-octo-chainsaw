@@ -28,6 +28,18 @@ router.get('/player/end', (req, res) => {
   
 })
 
+router.get('/king/end', (req, res) => {
+
+    res.render("./layouts/king-end", {
+        winStatus: test,
+        assassinStatus: test,
+        assassinRes: test,
+        guardStatus: test,
+        guardRes: test,
+    });
+  
+})
+
 router.post('/', (req, res) => {
 
 })
