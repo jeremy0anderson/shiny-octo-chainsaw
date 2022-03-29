@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Host, Player, Role } = require('../../models');
+const { Host, Player, Role, Room } = require('../../models');
 
 router.get('/', (req, res) => {
   Role.findAll()
@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
     ability: req.body.ability,
     win1: req.body.win1,
     win2: req.body.win2,
-    king_id: req.body.king_id,
+    room_id: req.body.room_id,
   })
     .then((dbPlayerData) => res.json(dbPlayerData))
     .catch((err) => {

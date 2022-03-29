@@ -2,7 +2,7 @@ const Host = require('./Host');
 const Game = require('./Game');
 const Player = require('./Player');
 const Role = require('./Role');
-const King = require('./King');
+const King = require('./Room');
 
 
 // create associations
@@ -14,7 +14,7 @@ Host.hasMany(Player, {
   foreignKey: 'host_id'
 });
 
-Player.belongsTo(Host, {
+Player.hasOne(Host, {
   foreignKey: 'host_id'
 });
 
@@ -26,12 +26,8 @@ Player.hasOne(Role, {
   foreignKey: 'role_id'
 });
 
-Role.hasMany(Player, {
-  foreignKey: 'role_id'
-});
+Room.hasMany(Player, {
+  foreignKey: 'room_id'
+})
 
-Role.belongsTo(King, {
-  foreignKey: 'king_id'
-});
-
-module.exports = { Player, Host, Role, Game, King };
+module.exports = { Player, Host, Role, Game, Room };

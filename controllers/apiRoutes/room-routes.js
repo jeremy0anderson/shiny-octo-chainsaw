@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Host, Player, King } = require('../../models');
+const { Host, Player, Room } = require('../../models');
 
 router.get('/', (req, res) => {
   

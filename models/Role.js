@@ -30,10 +30,10 @@ Role.init(
     win2: {
       type: DataTypes.STRING
     },
-    king_id: {
+    room_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'king',
+        model: 'room',
         key: 'id'
       }
     }
