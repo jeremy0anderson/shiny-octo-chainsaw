@@ -15,6 +15,8 @@ const SequelizeStore = require('express-session-sequelize')(session.Store);
 //configure .env and port
 const PORT = process.env.PORT || 4005;
 // configure handlebars
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 // app.set('views', './views');
 // app.set('view engine', 'hbs');
 // app.engine(
@@ -24,8 +26,6 @@ const PORT = process.env.PORT || 4005;
 //     defaultLayout: false,
 //   })
 // );
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
 
 // configure session/cookies
 const sess = {
@@ -43,6 +43,10 @@ const sess = {
   }),
 };
 
+// configure static resources (css, images, js)
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static('public'));
+
 app.use(session(sess));
 
 //configure req parsing
@@ -52,9 +56,6 @@ app.use(
     extended: true,
   })
 );
-// configure static resources (css, images, js)
-// app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // configure routes
 app.use(routes);
