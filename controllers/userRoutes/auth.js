@@ -38,7 +38,7 @@ const loginRenderOptions={
     };
 
 router.get('/',redirectUser,(req, res)=>{
-        res.render('home');
+        res.render('partials/homepage');
 });
 
 router.get('/signin',redirectUser,(req, res)=>{
