@@ -9,15 +9,12 @@ function redirectUser(req, res, next){
 }
 
 router.get('/', redirectUser,(req, res)=>{
-        res.render('home', {
+        res.render('partials/homepage', {
             signedIn:{
                 username: req.session.user
             }
         })
 });
-
-
-
 
 
 module.exports = router;

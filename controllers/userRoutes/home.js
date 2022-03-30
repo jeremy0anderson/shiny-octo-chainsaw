@@ -1,4 +1,3 @@
-const handlebars = require('express-handlebars');
 const router = require('express').Router();
 
 const roles = require('../../lib/roles.json');
