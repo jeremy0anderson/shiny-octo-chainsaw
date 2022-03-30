@@ -17,11 +17,11 @@ Player.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    game_code: {
+    game_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'game',
-        key: 'game_code'
+        key: 'id'
       }
     },
     role_id: {
