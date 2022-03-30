@@ -1,0 +1,173 @@
+<!-- HOMEPAGE BODY -->
+
+<section class="columns" id="page">
+    <!-- Column with Title and Buttons -->
+    <section class="column is-12-mobile is-3-tablet" id="start">
+        <section class="column background-black pl-6 pr-6" id="homepage-buttons">
+            <!-- hostGameBtn in JS -->
+<!-- this link should go to the sign up/login page -->
+            <a href="./host-pg.html" class="button is-fullwidth mb-3 background-red text-white" id="host">
+                Host A Game
+            </a>
+<!-- this should link to the player join page -->
+            <!-- joinGameBtn in JS -->
+            <a href="./join-pg.html" class="button is-fullwidth background-blue text-white" id="join">
+                Join A Game
+            </a>
+        </section>
+    </section>
+
+    <!-- Column with Story, The Game, The Role Cards -->
+    <section class="column is-12-mobile is-9-tablet text-white pr-5" id="right-column">
+        <div id="story">
+            <h2 class="subtitle is-5 has-text-right text-white mb-5 pr-5">
+                The <span class="text-red">king</span> is dead, who will be the next <span class="text-blue">king</span> of the kingdom?
+            </h2>
+
+            <p class="block">
+                News spread fast of the unexpected passing of the King. The King had never declared which of his two children would become the next to sit on the throne. The people were split and tempers flared quickly…
+            </p>
+            <p class="block">
+                To prevent a civil war the King's children decided to split the kingdom. They would exchange subjects between the two kingdoms for a short time, questioning them and testing their loyalties, until they sealed off the kingdoms for good.
+            </p>
+            <p class="block">
+                Not satisfied with only half the kingdom, both siblings went to the King’s craigslist and hired assassins to kill the other so that they could have the full kingdom to themselves.  
+            </p>
+            <p class="block">
+                Thus the board was set…
+            </p>
+            <p class="block">    
+                They went forth with their exchanges hoping to sneak their Assassin into each other’s kingdoms to do their work so they could have the kingdom to themselves.
+            </p>
+        </div>
+
+        <div id="game-instructions">
+            <h3 class="text-red">
+                THE GAME
+            </h3>
+            <ol>
+                <li>
+                    Each player will receive a role card (King, Guard, Assassin, and more!) with information about their character
+                </li>
+                <li>
+                    Then each player will be sent into either the Red King’s Court or the Blue King’s Court
+                </li>
+                <li>
+                    At court, each player must interact with other players to further their objectives
+                </li>
+                <li>
+                    At the end of the round, each King will banish a number of subjects from their court and send them to the other court
+                </li>
+                <li>
+                    After 3 rounds, all characters will reveal their identities
+                </li>
+                <li>
+                    If the other King’s Assassin is in the same room as the opposite king (Red Assassin with the Blue King) that King is dead UNLESS their guard is also in the same room (Blue Guard to protect the Blue King)
+                </li>
+            </ol>
+        </div>
+
+        <div id="role-explanation">
+            <h3 class="text-blue">
+                THE ROLE CARDS
+            </h3>
+            <ul>
+                <li>
+                    <b>Role Name:</b> Simply, the name of your role. Keep this a secret to start, unless you are the King.
+                </li>
+                <li>
+                    <b>Loyalty:</b> Tells you which King you are loyal to. Grey roles are loyal to neither King, they have other objectives.
+                </li>
+                <li>
+                    <b>Ability:</b> Defines special conditions of your role. For an example of an ability, the assassin can kill the King they are not loyal to if the guard is absent. 
+                </li>
+                <li>
+                    <b>Winning Conditions:</b> How do you win? This is your answer. Each player has at least 1 but possibly 2 winning conditions. This is your objective. You must meet both objectives in order to win.
+                </li>
+                <li>
+                    <b>Footnote:</b> Finally, there may be a note with additional conditions for your character.
+                </li>
+            </ul>
+        </div>
+
+        <div class="roles  is-hidden-mobile">
+            <h3 class="text-blue">
+                Core Roles
+            </h3>
+            <table>
+                <tr>
+                    <th class="text-white">Role</th>
+                    <th class="text-white">Loyalty</th>
+                    <th class="text-white">Ability</th>
+                    <th class="text-white">Win Condition 1</th>
+                    <th class="text-white">Win Condition 2</th>
+                    <th class="text-white">Footnote</th>
+                </tr>
+                <tr>
+                    <td>Red King</td>
+                    <td>Red</td>
+                    <td>Banish subjects to the Blue Court</td>
+                    <td>Survive</td>
+                    <td>Kill the Blue King</td>
+                    <td>Remain in the Red court</td>
+                </tr>
+                <tr>
+                    <td>Blue King</td>
+                    <td>Blue</td>
+                    <td>Banish subjects to the Red Court</td>
+                    <td>Survive</td>
+                    <td>Kill the Red King</td>
+                    <td>Remain in the Blue court</td>
+                </tr>
+                <tr>
+                    <td>Guard</td>
+                    <td>Red</td>
+                    <td>Protect the Red King from the Assassin</td>
+                    <td>The Red King Survives</td>
+                    <td>Finish in the Red Court</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Guard</td>
+                    <td>Blue</td>
+                    <td>Protect the Blue King from the Assassin</td>
+                    <td>The Blue King Survives</td>
+                    <td>Finish in the Blue court</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Assassin</td>
+                    <td>Red</td>
+                    <td>Assassinate the Blue King if the Guard is Absent</td>
+                    <td>The Red King Survives</td>
+                    <td>Assassinate the Blue King</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Assassin</td>
+                    <td>Blue</td>
+                    <td>Assassinate the Red King if the Guard is Absent</td>
+                    <td>The Blue King Survives</td>
+                    <td>Assassinate the Red King</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Successor</td>
+                    <td>Grey</td>
+                    <td>Know the Identity of Both Assassins</td>
+                    <td>Both Kings get Assassinated</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>The Queen Mother</td>
+                    <td>Grey</td>
+                    <td>Know the Identity of Both Assassins</td>
+                    <td>Both Kings Survive</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+</section>
