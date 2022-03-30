@@ -9,9 +9,23 @@
 }
 
 #player-list {
-    height: 78%;
+    height: 60%;
 }
 
 #start-game {
     margin: 0 auto;
+}
+
+#game-info-pannel {
+    height: 80vh;
+}
+
+#game-info-menu {
+    border-bottom-style:solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.width {
+    width: 100%;
 }
