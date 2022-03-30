@@ -26,8 +26,8 @@ Player.hasOne(Role, {
   foreignKey: 'role_id'
 });
 
-Room.hasMany(Player, {
-  foreignKey: 'room_id'
-})
+// Room.hasMany(Player, {
+//   foreignKey: 'room_id'
+// })
 
-module.exports = { Player, Host, Role, Game, Room };
+module.exports = { Player, Host, Role, Game };

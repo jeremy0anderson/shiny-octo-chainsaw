@@ -54,7 +54,7 @@
 
     <!-- Right Column -->
     <section class="column is-12-mobile is-8-tablet text-white pr-5" id="right-column">
-        {{!-- if on the homepage (AKA /home on the end) show this, otherwise hide --}}
+        {{!-- if on the homepage (AKA /home with no /king or /player on the end) show this, otherwise hide --}}
         {{ #if /home }}
         <div id="story">
             <h2 class="subtitle is-5 has-text-right text-white mb-5 pr-5">
@@ -79,7 +79,7 @@
         </div>
         {{ /#if }}
 
-        {{!-- if on the /king page and the timer runs out display this, otherwise hide --}}
+        {{!-- if on the /home/king page and the timer runs out display this, otherwise hide --}}
         {{ #if /king/timerUp }}
         <div class="box background-white" id="banish">
             <h3 class="text-red" id="king-question">
@@ -148,7 +148,30 @@
             </ul>
         </div>
 
-        <div class="roles is-hidden-mobile is-hidden-touch">
+        {{!-- create role cards rather than a table? --}}
+        {{ #each role }}
+        <div class="columns is-flex-direction-row flex-wrap-wrap is-justify-content-space-between">
+            <div class="column box background-white has-text-centered">
+                <figure class="is-inline-block">
+                    <img src="">
+                </figure>
+                <h3 class="text-black mt-0">
+                    {{ roles.name }}
+                </h3>
+                <h4 class="text-black">
+                    Ability: {{ roles.ability }}
+                </h4>
+                <h4 class="text-black">
+                    Win Conditions: {{ roles.winCondition1 }}, {{ roles.winCondition2 }}
+                </h4>
+                <h4 class="text-black">
+                    Footnote: {{ roles.footnote }}
+                </h4>
+            </div>
+        </div>
+        {{ /#each }}
+
+        <div class="roles is-hidden-touch">
             <h3 class="text-blue" id="core-roles">
                 Core Roles
             </h3>
@@ -180,7 +203,7 @@
                 <tr>
                     <td>Guard</td>
                     <td>Red</td>
-                    <td>Protect the Red King from the Assassin</td>
+                    <td>Protect the Red King from the Blue Assassin</td>
                     <td>The Red King Survives</td>
                     <td>Finish in the Red Court</td>
                     <td></td>
@@ -188,7 +211,7 @@
                 <tr>
                     <td>Guard</td>
                     <td>Blue</td>
-                    <td>Protect the Blue King from the Assassin</td>
+                    <td>Protect the Blue King from the Red Assassin</td>
                     <td>The Blue King Survives</td>
                     <td>Finish in the Blue court</td>
                     <td></td>
@@ -196,7 +219,7 @@
                 <tr>
                     <td>Assassin</td>
                     <td>Red</td>
-                    <td>Assassinate the Blue King if the Guard is Absent</td>
+                    <td>Assassinate the Blue King if the Blue Guard is Absent</td>
                     <td>The Red King Survives</td>
                     <td>Assassinate the Blue King</td>
                     <td></td>
@@ -204,7 +227,7 @@
                 <tr>
                     <td>Assassin</td>
                     <td>Blue</td>
-                    <td>Assassinate the Red King if the Guard is Absent</td>
+                    <td>Assassinate the Red King if the Red Guard is Absent</td>
                     <td>The Blue King Survives</td>
                     <td>Assassinate the Red King</td>
                     <td></td>
