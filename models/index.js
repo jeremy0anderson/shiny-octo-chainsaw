@@ -30,4 +30,4 @@ const Room = require('./Room');
 //   foreignKey: 'room_id'
 // })
 
-module.exports = { Player, Host, Role, Game };
+module.exports = { Player, Host, Role, Game, Room };
