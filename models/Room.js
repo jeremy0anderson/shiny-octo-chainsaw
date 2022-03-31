@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const {sequelize} = require('../config/connection');
 
 // create our Room model
 class Room extends Model {}
@@ -19,6 +19,6 @@ Room.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'role',
+    modelName: 'room',
   }
 );

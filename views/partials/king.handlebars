@@ -1,0 +1,52 @@
+<section class="column background-black pl-6 pr-6 mt-4" id="player-page-buttons">
+    <div class="box background-white" id="timer">
+        <h4 class="text-black" id="timer-label">
+            Round {{ game.number }} 
+        </h4>
+    </div>
+
+    <div class="box background-white has-text-centered">
+        <figure class="is-inline-block">
+            <img src="/images/crown.png">
+        </figure>
+        <h3 class="text-black mt-0">
+            {{ kingData.name }}
+        </h3>
+        <h4 class="text-black">
+            Ability: {{ kingData.ability }}
+        </h4>
+        <h4 class="text-black">
+            Win Conditions: {{ kingData.winCondition1 }}, {{ kingData.winCondition2 }}
+        </h4>
+        <h4 class="text-black">
+            Footnote: {{ kingData.footnote }}
+        </h4>
+    </div>
+</section>
+
+<!-- Right Column -->
+<section class="column is-12-mobile is-8-tablet text-white" id="right-column">
+    <div class="box background-white" id="banish">
+        <h3 class="text-red" id="king-question">
+            Who will you banish from your court for the next round?
+        </h3>
+        <form id="banish-form">
+            <input type="checkbox" id="player1" name="player1" value="Aaron">
+            <label for="player1">
+                Aaron
+            </label><br>
+            <input type="checkbox" id="player2" name="player2" value="Jeremy">
+            <label for="player2">
+                Jeremy
+            </label><br>
+            <input type="checkbox" id="player3" name="player1" value="Rachel">
+            <label for="player1">
+                Rachel
+            </label><br>
+            <input type="checkbox" id="player4" name="player1" value="Ilan">
+            <label for="player1">
+                Ilan
+            </label><br>
+            <input type="submit" value="Submit" class="button background-red mt-3" id="banish-submit">
+        </form>
+    </div>

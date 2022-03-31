@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,38 +8,136 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Merriweather:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/style.css"/>
+    <link rel="stylesheet" href="/css/home.css"/>
 
-    <link rel="icon" type="image/x-icon" href="./assets/images/crown.png">
+    <link rel="icon" type="image/x-icon" href="/images/crown.png">
     <title>Assassination</title>
 </head>
 <body class="background-black">
-    <!-- navigation bar to show when in tablet or larger -->
+    {{!-- Navbar, shows when larger than tablet --}}
     <div class="columns">
         <div class="column">
-            <nav class="navbar background-black is-fixed-top is-hidden-mobile" id="navigation">
-                <img src="./assets/images/assassination_navbar.png" alt="Assassination: Between Two Kingdoms" class="" id="navigation-img">
-
-                {{!-- <a href="#game-instructions" class="navbar-item navbar-end is-4 text-white mt-6" id="nav-game">
+            <nav class="navbar background-black is-fixed-top is-hidden-touch" id="navigation">
+                <img src="/images/assassination_navbar.png" alt="Assassination: Between Two Kingdoms" id="navigation-img">
+                {{#if signedIn}}
+                <h5 class="text-white mt-6">Welcome, {{signedIn.username}}!</h5>
+                {{/if}}
+                <a href="#game-instructions" class="navbar-item navbar-end is-4 text-white mt-6" id="nav-game">
                     The Game
                 </a>
-                <a href="#role-explanation" class="navbar-item is-4 text-white mt-6 ml-5 mr-4" id="nav-role">
+                <a href="#role-explanation" class="navbar-item is-4 text-white mt-6 ml-5 mr-4" id="nav-explanation">
                     The Role Cards
-                </a> --}}
+                </a>
+                <a href="#core-roles" class="navbar-item is-4 text-white mt-6 ml-5 mr-4" id="nav-role">
+                    Core Roles
+                </a>
             </nav>
         </div>
     </div>
 
-    <!-- title image to show on mobile -->
+    {{!-- Title Image, to show on touch device --}}
     <div class="mobile-image">
-        <img src="./assets/images/assassination_navbar.png" alt="Assassination: Between Two Kingdoms" class="is-hidden-tablet">
+        <img src="/images/assassination_navbar.png" alt="Assassination: Between Two Kingdoms" class="is-hidden-desktop">
     </div>
+    <section class="columns">
+        
+            {{!-- use homepage, king, and player partials to render left column and top part of right column --}}
+            {{{ body }}}
 
-    {{{ body }}}
+            <div id="game-instructions">
+                <h3 class="text-red">
+                    THE GAME
+                </h3>
+                <ol class="pl-5">
+                    <li>
+                        Each player will receive a role card (King, Guard, Assassin, and more!) with information about their character
+                    </li>
+                    <li>
+                        Then each player will be sent into either the Red King’s Court or the Blue King’s Court
+                    </li>
+                    <li>
+                        At court, each player must interact with other players to further their objectives
+                    </li>
+                    <li>
+                        At the end of the round, each King will banish a number of subjects from their court and send them to the other court
+                    </li>
+                    <li>
+                        After 5 rounds, all characters will reveal their identities
+                    </li>
+                    <li>
+                        If the other King’s Assassin is in the same room as the opposite king (Red Assassin with the Blue King) that King is dead UNLESS their guard is also in the same room (Blue Guard to protect the Blue King)
+                    </li>
+                </ol>
+            </div>
 
-    <footer class="text-white has-text-centered p-5">
-        Built by Aaron Jones, Rachel Marriott, Jeremy Anderson, Ilan Timerman, and Lilly Leiran
-    </footer>
-    <script src="./assets/js/homepage.js"></script>
+            <div id="role-explanation">
+                <h3 class="text-blue">
+                    THE ROLE CARDS
+                </h3>
+                <ul>
+                    <li>
+                        <b>Role Name:</b> Simply, the name of your role. Keep this a secret to start, unless you are the King.
+                    </li>
+                    <li>
+                        <b>Loyalty:</b> Tells you which King you are loyal to. Grey roles are loyal to neither King, they have other objectives.
+                    </li>
+                    <li>
+                        <b>Ability:</b> Defines special conditions of your role. For an example of an ability, the assassin can kill the King they are not loyal to if the guard is absent. 
+                    </li>
+                    <li>
+                        <b>Winning Conditions:</b> How do you win? This is your answer. Each player has at least 1 but possibly 2 winning conditions. This is your objective. You must meet both objectives in order to win.
+                    </li>
+                    <li>
+                        <b>Footnote:</b> Finally, there may be a note with additional conditions for your character.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="roles is-hidden-touch" id="core-roles">
+                <h3 class="text-blue">
+                    Core Roles
+                </h3>
+
+                {{!-- create role cards rather than a table? --}}
+                
+                <div class="columns is-flex-wrap-wrap is-flex-direction-row is-justify-content-center" id="roles">
+                    {{#each roles}}
+                    <div class="column is-5 box background-white has-text-centered mt-4 card">
+                        <figure class="is-inline-block">
+                            <img src="{{image}}">
+                        </figure>
+                        <h3 class="text-black mt-0">
+                            {{name}}
+                        </h3>
+                        <h4 class="text-black">
+                            Loyalty: {{loyalty}}
+                        </h4>
+                        <h4 class="text-black">
+                            Ability: {{ability}}
+                        </h4>
+                        <h4 class="text-black">
+                            Win Conditions: 
+                            <ul id="win">
+                                <li>
+                                    {{winCondition1}}
+                                </li>
+                                <li>
+                                    {{winCondition2}}
+                                </li>
+                            </ul>
+                        </h4>
+                        <h4 class="text-black">
+                            <b>{{footnote}}</b>
+                        </h4>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+<footer class="text-white has-text-centered p-5">
+    Built by Aaron Jones, Rachel Marriott, Jeremy Anderson, Ilan Timerman, and Lilly Leiran
+</footer>
+<script src="/js/homepage.js"></script>
 </body>
-</html>

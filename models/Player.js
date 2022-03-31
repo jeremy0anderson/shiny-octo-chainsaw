@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const {sequelize} = require('../config/connection');
 
 // create our Player model
 class Player extends Model {}
@@ -17,13 +17,13 @@ Player.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    game_code: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'game',
-        key: 'game_code'
-      }
-    },
+    // game_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'game',
+    //     key: 'id'
+    //   }
+    // },
     role_id: {
       type: DataTypes.INTEGER,
       references: {
