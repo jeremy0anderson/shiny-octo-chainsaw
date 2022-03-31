@@ -1,0 +1,28 @@
+<section class="column">
+    {{#if end }}
+        <section class="hero is-fullheight-with-navbar">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="column is-4 is-offset-4">
+                        <img src="{{winImg}}">
+                        <h3 class="title has-text-white">{{winStatus}}</h3>
+                        <hr class="login-hr">
+                        {{#if end.king}}
+                        <p class="subtitle has-text-white">{{end.king.assassinStatus}}</p>
+                        <p class="subtitle has-text-white">{{end.king.guardStatus}}</p>
+                        {{/if}}
+                        {{#if end.player}}
+                        <p class="subtitle has-text-white">{{end.player.winCon1}}:  {{end.player.winConRes1}}</p>
+                        <p class="subtitle has-text-white">{{end.player.winCon2}}:  {{end.player.winConRes2}}</p>
+                        <hr class="login-hr">
+                        <p class="subtitle has-text-white">Blue king: {{end.player.blueKingStatus}}</p>
+                        <p class="subtitle has-text-white">Red king: {{end.player.redKingStatus}}</p>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {{/if}}
+</section>
+
+<section class="column is-12-mobile is-8-tablet is-hidden text-white" id="right-column">
