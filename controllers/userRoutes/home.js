@@ -62,9 +62,6 @@ const roles = require('../../lib/roles.json');
 // };
 
 router.get('/',(req, res)=>{
-    if (!req.session.user){
-        res.redirect('/signup');
-    }
     res.render('partials/homepage', {layout: 'main', roles});
 });
 
@@ -81,11 +78,11 @@ router.get('/king',(req, res)=>{
             "king": true
         };
 
-    res.render('partials/king', {layout: 'main', kingData});
+    res.render('partials/king', {layout: 'main', kingData, roles});
 });
 
 router.get('/player',(req, res)=>{
-    res.render('partials/player', {layout: 'main'});
+    res.render('partials/player', {layout: 'main', roles});
 });
 
 module.exports = router;

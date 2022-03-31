@@ -44,7 +44,7 @@ router.get('/',(req, res)=>{
 });
 
 router.get('/signin',(req, res)=>{
-        res.render('./layouts/auth', loginRenderOptions);
+    res.render('partials/auth', loginRenderOptions);
 });
 router.post("/signin",(req, res)=>{
     Host.findOne({
@@ -58,7 +58,7 @@ router.post("/signin",(req, res)=>{
         if (hostData.checkPassword(req.body.password)) {
             req.session.user = hostData.username;
             // res.locals.user = req.session.user;
-            res.redirect('/home');
+            // res.redirect('/home');
         }
     }).catch((err)=>{
         console.log(err);
@@ -68,11 +68,11 @@ router.post("/signin",(req, res)=>{
 
 
 router.get('/signup', (req, res)=>{
-    if (req.session.user){
-        res.redirect('/home')
-    } else {
-        res.render('./layouts/auth', signUpRenderOptions);
-    }
+    // if (req.session.user){
+    //     res.redirect('/home')
+    // } else {
+        res.render('./partials/auth', signUpRenderOptions);
+    // }
 });
 router.post("/signup",async(req, res)=>{
     const signupBody = {
