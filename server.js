@@ -5,7 +5,7 @@ const express = require('express'),
   app = express(),
   exphbs = require('express-handlebars'),
   session = require('express-session'),
-  sequelize = require('./config/connection'),
+    {sequelize, configureSession} = require('./config/connection'),
   hbs = exphbs.create({}),
   path = require('path');
 
@@ -28,27 +28,12 @@ app.set('view engine', 'handlebars');
 // );
 
 // configure session/cookies
-const sess = {
-  name: "connect.sid",
-  secret: process.env.SESSION_SECRET,
-  path: "/",
-  cookie: {
-    //set to 5 minutes for testing
-    maxAge: 1000 * 60 * 5,
-  },
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
-};
+
 
 // configure static resources (css, images, js)
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static('public'));
-
-app.use(session(sess));
-
+configureSession(app);
 //configure req parsing
 app.use(express.json());
 app.use(

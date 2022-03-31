@@ -62,6 +62,9 @@ const roles = require('../../lib/roles.json');
 // };
 
 router.get('/',(req, res)=>{
+    if (!req.session.user){
+        res.redirect('/signup');
+    }
     res.render('partials/homepage', {layout: 'main', roles});
 });
 
