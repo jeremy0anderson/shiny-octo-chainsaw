@@ -1,14 +1,18 @@
 <!-- Left Column -->
 <section class="column background-black pl-6 pr-6" id="left-column">
     <section id="homepage-buttons">
-        <!-- hostGameBtn in JS -->
-        <button href="" class="button is-fullwidth mb-3 background-red" id="host">
-            Host A Game
-        </button>
-        <!-- joinGameBtn in JS -->
-        <button href="" class="button is-fullwidth background-blue" id="join">
-            Join A Game
-        </button>
+        <form method="GET" action="/lobby/host" type="submit">
+            <!-- hostGameBtn in JS -->
+            <button href="" class="button is-fullwidth mb-3 background-red" id="host">
+                Host A Game
+            </button>
+        </form>
+        <form method="GET" action="/lobby/player" type="submit">
+            <!-- joinGameBtn in JS -->
+            <button href="" class="button is-fullwidth background-blue" id="join">
+                Join A Game
+            </button>
+        </form>
     </section>
 </section>
 

@@ -38,20 +38,20 @@ Host.init(
         len: [4],
       },
     },
-    game_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'game',
-        key: 'id'
-      }
-    },
-    player_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'player',
-        key: 'id'
-      }
-    }
+  //   game_id: {
+  //     type: DataTypes.INTEGER,
+  //     references: {
+  //       model: 'game',
+  //       key: 'id'
+  //     }
+  //   },
+  //   player_id: {
+  //     type: DataTypes.INTEGER,
+  //     references: {
+  //       model: 'player',
+  //       key: 'id'
+  //     }
+  //   }
   },
   {
     hooks: {

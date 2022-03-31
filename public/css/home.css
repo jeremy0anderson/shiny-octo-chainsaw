@@ -69,34 +69,23 @@
 /* utility classes */
 
 /* buttons */
-#host, #join, #submit, #display, #hide, #banish-submit {
+#host, #join, #submit, #display, #hide, #banish-submit, #start-game, #cancel-game, #auth-button {
     border: none !important;
     font-family: 'Merriweather', serif;
     color: var(--white);
 }
 /* buttons */
 
-/* navbar - does not display on touch devices */
+/* navbar */
+#navigation {
+    justify-content: center;
+}
+
 #navigation-img {
     width: 400px;
     margin: 15px;
 }
-
-#nav-game:hover {
-    background-color: var(--black) !important;
-    color: var(--red) !important;
-}
-
-#nav-role:hover {
-    background-color: var(--black) !important;
-    color: var(--blue) !important;
-}
-
-#nav-explanation:hover {
-    background-color: var(--black) !important;
-    color: var(--blue) !important;
-}
-/* navbar - does not display on touch devices */
+/* navbar */
 
 
 /* left column */
