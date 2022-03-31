@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "image": "https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-crown-canada-flatart-icons-outline-flatarticons.png",
         "name": "Red King",
         "loyalty": "Red",
         "ability": "Banish subjects to the Blue Court",
@@ -11,6 +12,7 @@
     },
     {
         "id": 2,
+        "image": "https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-crown-canada-flatart-icons-outline-flatarticons.png",
         "name": "Blue King",
         "loyalty": "Blue",
         "ability": "Banish subjects to the Red Court",
@@ -21,6 +23,7 @@
     },
     {
         "id": 3,
+        "image": "https://img.icons8.com/external-dreamstale-lineal-dreamstale/64/000000/external-shield-security-dreamstale-lineal-dreamstale-7.png",
         "name": "Guard",
         "loyalty": "Red",
         "ability": "Protect the Red King from the Blue Assassin",
@@ -31,6 +34,7 @@
     },
     {
         "id": 4,
+        "image": "https://img.icons8.com/external-dreamstale-lineal-dreamstale/64/000000/external-shield-security-dreamstale-lineal-dreamstale-7.png",
         "name": "Guard",
         "loyalty": "Blue",
         "ability": "Protect the Blue King from the Red Assassin",
@@ -41,6 +45,7 @@
     },
     {
         "id": 5,
+        "image": "https://img.icons8.com/windows/64/000000/royal-marines.png",
         "name": "Assassin",
         "loyalty": "Red",
         "ability": "Assassinate the Blue King if the Blue Guard is Absent",
@@ -51,6 +56,7 @@
     },
     {
         "id": 6,
+        "image": "https://img.icons8.com/windows/64/000000/royal-marines.png",
         "name": "Assassin",
         "loyalty": "Blue",
         "ability": "Assassinate the Red King if the Red Guard is Absent",
@@ -61,9 +67,10 @@
     },
     {
         "id": 7,
+        "image": "https://img.icons8.com/small/64/000000/fairytale.png",
         "name": "Successor",
         "loyalty": "Grey",
-        "ability": "Know the Identity of Both Assassins",
+        "ability": "Knows the Identity of Both Assassins",
         "winCondition1": "Both Kings get Assassinated",
         "winCondition2": null,
         "footnote": null,
@@ -71,9 +78,10 @@
     },
     {
         "id": 8,
+        "image": "https://img.icons8.com/windows/64/000000/medieval-crown.png",
         "name": "The Queen Mother",
         "loyalty": "Grey",
-        "ability": "Know the Identity of Both Assassins",
+        "ability": "Knows the Identity of Both Assassins",
         "winCondition1": "Both Kings Survive",
         "winCondition2": null,
         "footnote": null,
