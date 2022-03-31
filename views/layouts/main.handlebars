@@ -8,8 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Merriweather:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/home.css"/>
-    <link rel="stylesheet" href="./css/wait-list.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
 
     <link rel="icon" type="image/x-icon" href="/images/crown.png">
     <title>Assassination</title>
@@ -32,7 +31,7 @@
 
     <section class="columns">
         
-            {{!-- use homepage, king, and player partials to render left column and top part of right column --}}
+            {{!-- body should contain left column and opening section tag for the second column (can include is-hidden for second column if second column is not needed, see auth for example) --}}
             {{{ body }}}
 
             <div id="game-instructions">
@@ -130,6 +129,4 @@
 <footer class="text-white has-text-centered p-5">
     Built by Aaron Jones, Rachel Marriott, Jeremy Anderson, Ilan Timerman, and Lilly Leiran
 </footer>
-<script src="/js/homepage.js"></script>
-<script type="text/javascript" src="../js/bulma.js"></script>
 </body>

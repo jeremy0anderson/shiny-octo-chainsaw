@@ -87,6 +87,17 @@
 }
 /* navbar */
 
+/* login hero */
+
+#login-crown {
+    max-height: 50px;
+}
+
+.hero p a {
+    color: var(--white);
+}
+
+/* login hero */
 
 /* left column */
 #homepage-buttons {
@@ -138,6 +149,40 @@ footer {
     font-size: 12px;
 }
 /* footer style */
+
+/* wait list CSS */
+#page {
+    height: 100vh;
+    padding-left: 0;
+    margin: 0;
+}
+
+#container-game-code {
+    margin: 0 auto;
+}
+
+#player-list {
+    height: 60%;
+}
+
+#start-game {
+    margin: 0 auto;
+}
+
+#game-info-pannel {
+    height: 80vh;
+}
+
+#game-info-menu {
+    border-bottom-style:solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.width {
+    width: 100%;
+}
+/* wait list CSS */
 
 @media screen and (min-width: 768px) {
     /* applies to screens above 768px */
