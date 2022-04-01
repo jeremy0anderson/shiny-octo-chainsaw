@@ -77,7 +77,7 @@ router.post("/signin",(req, res)=>{
             req.session.hostName = hostData.username;
             req.session.hostCode = Math.random().toString(36).slice(2,8);
             // res.locals.user = req.session.user;
-            // res.redirect('/home');
+            res.redirect('/home');
         }
     }).catch((err)=>{
         console.log(err);
