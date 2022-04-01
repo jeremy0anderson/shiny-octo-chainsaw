@@ -3,13 +3,13 @@
     <section id="homepage-buttons">
         <form method="GET" action="/lobby/host" type="submit">
             <!-- hostGameBtn in JS -->
-            <button href="" class="button is-fullwidth mb-3 background-red" id="host">
+            <button class="button is-fullwidth mb-3 background-red" id="host">
                 Host A Game
             </button>
         </form>
-        <form method="GET" action="/lobby/player" type="submit">
+        <form method="GET" action="/join" type="submit">
             <!-- joinGameBtn in JS -->
-            <button href="" class="button is-fullwidth background-blue" id="join">
+            <button class="button is-fullwidth background-blue" id="join">
                 Join A Game
             </button>
         </form>
@@ -39,3 +39,9 @@
             They went forth with their exchanges hoping to sneak their Assassin into each other’s kingdoms to do their work so they could have the kingdom to themselves.
         </p>
     </div>
+</section>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+</script>
+<script type="module" src="/js/homepage.js"></script>

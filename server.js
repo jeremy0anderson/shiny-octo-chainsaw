@@ -31,22 +31,30 @@ app.set('view engine', 'handlebars');
 
 
 // configure static resources (css, images, js)
-app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static('public'));
-configureSession(app);
+// configureSession(app);
 //configure req parsing
 app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: false,
-  })
-);
+app.use(express.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // configure routes
 app.use(routes);
+//configure socket.io
+const {Server} = require('socket.io')
+const httpApp = require('http').createServer(app);
+const io = new Server(httpApp, {
+  transports: ['websocket', 'polling'],
+  serveClient: true,
+  allowUpgrades: true
+})
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
+  httpApp.listen(PORT, () => {
     console.log(`Listening on ${PORT}`);
   });
+});
+app.set("socketIO", io);
+// app.set('playerSocket', ioPlayer);
+io.on('connection', (socket)=> {
 });

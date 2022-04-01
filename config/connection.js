@@ -12,20 +12,26 @@ let sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.
     })
 
 const configureSession=(app)=>{
-    return app.use(session({
+    let sessionOptions = {
         name: "sid",
         secret: process.env.SESSION_SECRET,
+        proxy: false,
         cookie: {
             maxAge: 1000 * 60 * 60 * 24,
+            secure: false
         },
         resave: false,
         saveUninitialized: false,
         store: new SessionStore({
             db: sequelize
         }),
-    }), (req, res, next)=>{
-        console.log(req.session.user);
-        console.log('using session');
+    };
+    if (process.env.NODE_ENV === "production") {
+        sessionOptions.proxy = true;
+        sessionOptions.cookie.secure = true
+    }
+    app.use(session(sessionOptions),
+    (req, res, next)=>{
         next();
     });
 }

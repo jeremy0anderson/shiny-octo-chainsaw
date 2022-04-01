@@ -3,10 +3,11 @@
         <h3 class="is-hidden-mobile">Select which players you would like to play as the opposing Kings.</h3>
         <p class="is-hidden-tablet">Select which players you would like to play as the opposing Kings.</p>
         <div class="box" id="player-list">
-            <ul class="checkbox" id="players">
-                <li class=""><input type="checkbox">  Aaron</input></li>
-                
-            </ul>
+            <form id="players-list-display">
+                <ul class="checkbox" id="players-list">
+
+                </ul>
+            </form>
         </div>
         <div class="buttons">
             <button class="button background-red text-white is-centered px-6" id="start-game">Start Game</button>
@@ -58,4 +59,7 @@
             </div>
         </div>
     </section>
-<section class="column is-12-mobile is-8-tablet is-hidden text-white" id="right-column">
+    <section class="column is-12-mobile is-8-tablet is-hidden text-white" id="right-column"></section>
+    <script type="module" src="/socket.io/socket.io.js"></script>
+
+    <script type="module" src="/js/host-wait.js"></script>
