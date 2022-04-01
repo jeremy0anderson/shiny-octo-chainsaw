@@ -102,7 +102,7 @@ router.post("/signup",async(req, res)=>{
     Host.create(signupBody)
         .then((dbHostData) =>{
             // setup hostname and game code (stored in session) on signup
-            req.session.hostName = dbHostData.username;
+            req.session.hostName = req.body.username;
             req.session.hostCode = Math.random().toString(36).slice(2,8);
             //res.locals.user = req.session.user;
             res.redirect('/home');

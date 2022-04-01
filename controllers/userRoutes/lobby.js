@@ -50,6 +50,10 @@ router.get('/player', (req,res) => {
     res.render('partials/player-wait', {layout: 'main'})
 });
 
+router.post('/host', (req,res) => {
+
+})
+
 router.post('/player', (req,res) => {
     // if (!req.session.player){
     //     res.redirect('/signup');
