@@ -13,7 +13,7 @@ configureSession(router);
 router.use('/dashboard', dashboardRoute);
 router.use('/game', gameRoute);
 router.use('/', authRoute);
-router.use('/home', homeRoute);
+router.use('/', homeRoute);
 router.use('/lobby', lobbyRoute);
 
 module.exports = router;
