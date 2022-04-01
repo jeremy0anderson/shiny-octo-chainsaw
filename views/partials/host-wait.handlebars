@@ -1,11 +1,14 @@
     <!-- Player List with Checkbox to Select Kings -->
+    <section class="game-code">{{gameCode}}</section>
     <section class="column is-12-mobile is-12-tablet is-6-desktop text-yellow px-5 p-6" id="host-player-list" >
         <h3 class="is-hidden-mobile">Select which players you would like to play as the opposing Kings.</h3>
         <p class="is-hidden-tablet">Select which players you would like to play as the opposing Kings.</p>
         <div class="box" id="player-list">
             <form id="players-list-display">
-                <ul class="checkbox" id="players-list">
-
+                <ul class="players-list" id="players-list">
+                {{#each players}}
+                    <li class="checkbox players-list-item"><label><input type="checkbox"/>{{this}}</label></li>
+                {{/each}}
                 </ul>
             </form>
         </div>

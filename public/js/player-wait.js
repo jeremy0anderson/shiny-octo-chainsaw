@@ -1,10 +1,17 @@
 import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
-const socketHost = io('https://assassination-multiplayer.herokuapp.com/game', {
+// const socketHost = io('https://assassination-multiplayer.herokuapp.com/game', {
+//     forceNew: false,
+//     transports:['websocket'],
+//     reconnectionDelayMax: 10000
+// });
+let players = [];
+const socket = io(`${window.location.origin}/player`, {
     forceNew: false,
     transports:['websocket'],
     reconnectionDelayMax: 10000
 });
 
-socketHost.on('playerConnected',(data)=>{
-    console.log(JSON.parse(data).message);
+socket.on('playerConnected',(data)=>{
+    players = data;
+    console.log(data);
 });

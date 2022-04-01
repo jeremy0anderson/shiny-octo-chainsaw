@@ -6,7 +6,9 @@ const express = require('express'),
   exphbs = require('express-handlebars'),
   session = require('express-session'),
     {sequelize, configureSession} = require('./config/connection'),
-  hbs = exphbs.create({}),
+  hbs = exphbs.create({
+    defaultLayout: 'main'
+  }),
   path = require('path');
 
 //configure db session storage
@@ -28,9 +30,14 @@ app.use(routes);
 //configure socket.io
 const {Server} = require('socket.io')
 const httpApp = require('http').createServer(app);
+
+//setup websockets && custom namespaces
 const io = new Server(httpApp, {
   transports: ['websocket']
-})
+});
+const ioHost = io.of('/host');
+const ioPlayer = io.of('/player');
+const ioGame = io.of('/game');
 
 sequelize.sync({ force: false }).then(() => {
   httpApp.listen(PORT, () => {
@@ -40,5 +47,5 @@ sequelize.sync({ force: false }).then(() => {
 io.of('/game').on('connection', (socket)=>{
 
 })
-app.set("socketIO", io);
-// app.set('playerSocket', ioPlayer);
+
+app.set('socketIO', io);

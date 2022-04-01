@@ -1,61 +1,98 @@
 const router = require('express').Router();
-const {Host} = require('../../models');
 
+/// configure io / appropriate namespaces
+
+let players = [];
+let connections = new Set();
+
+
+function filterByUser(socket, array){
+    const socketUsername = socket.username;
+    return array.filter((username) => {
+        return username !== socketUsername;
+    });
+}
+function hostNSP(req, res, next){
+    const ioHost = req.app.get('socketIO')
+}
 // displays HOST waiting/lobby page if user is signed in otherwise it re-directs
 router.get('/host', (req,res) => {
-    const ioHost = req.app.get('socketIO').of('/game');
-        ioHost.on('connection', (socket)=> {
+    const io = req.app.get('socketIO');
+    const hostNSP = io.of('/host');
+    const playerNSP = io.of('/player')
+    if (req.session.signedIn === true) {
+
+
+        let user = req.session.hostName;
+        let code = req.session.hostCode;
+        hostNSP.on('connection', (socket) => {
+            //add connection to set (makes it easier to remove on disconnect) //
             ///////// setup socket vars ////////
-            socket.username = req.session.hostName;
-            socket.gameCode = req.session.hostCode;
-            socket.join(req.session.hostCode);
-            ioHost.to(req.session.hostCode).emit('hostConnected', JSON.stringify({
-                message: `host: ${socket.username} is in room: ${socket.gameCode}`
-            }));
-            socket.on("disconnect", ()=>{
-                ioHost.removeAllListeners();
+            socket.username = user;
+            socket.gameCode = code;
+            //// join the same game room as the host
+            socket.join(code);
+
+            connections.add(socket)
+            console.log(connections);
+            socket.to(socket.gameCode).emit('playerConnected', user);
+            socket.on("disconnect", () => {
+                connections.delete(socket);
+                // players = players.filter(p=> p.includes(socket.username) === false);
+                // ioHost.to(code).emit('removed', players);
+                io.in(code).emit('userLeft', connections);
+                let newPlayers = filterByUser(socket, players);
+                console.log(newPlayers);
+                socket.removeAllListeners();
                 console.log('disconnected');
             })
-
-    });
-    res.render('partials/host-wait', {layout: 'main'});
-
+        });
+        res.render('partials/host-wait', {
+            players: players,
+            gameCode: req.session.hostCode
+        });
+    } else {
+        res.redirect('/signup')
+    }
 });
-
+router.post('/host', (req, res)=>{
+    if (req.session.signedIn === true) {
+        res.redirect('/lobby/host');
+    }
+})
 // displays PLAYER waiting/lobby page if player has entered their info otherwise it re-directs
 router.get('/player', (req,res) => {
     const io = req.app.get('socketIO');
-    const ioPlayer = req.app.get('socketIO').of('/game');
-    const GameRoom = req.session.hostCode;
-    ioPlayer.on('connection', (socket)=> {
-        if (req.session.playerCode === GameRoom) {
-            socket.username = req.session.playerName;
-            console.log(`player: ${socket.username}`)
-            socket.join(GameRoom);
-            ioPlayer.to(GameRoom).emit('playerConnected', JSON.stringify({
-                message: `${socket.username} is in: ${GameRoom}`
-            }));
-            socket.on("disconnect", ()=>{
-                io.removeAllListeners();
-                console.log('disconnected');
-            })
-        }
-    });
+    const hostNSP = io.of('/host');
+    const playerNSP = io.of('/player')
+    playerNSP.on('connection', (socket)=> {
 
-    res.render('partials/player-wait', {layout: 'main'})
+        let name = req.session.playerName,
+            code = req.session.playerCode
+        socket.name = req.session.playerName
+        socket.code = req.session.playerCode
+        socket.join(socket.room);
+        let playerStats = {
+            id: socket.id,
+            name: socket.name,
+            room: socket.code
+        }
+        hostNSP.to(req.session.playerCode).emit('playerConnected', playerStats)
+        playerNSP.emit('playerConnected', playerStats);
+        socket.on("disconnect", ()=>{
+            socket.removeAllListeners();
+            console.log('disconnected');
+        })
+
+        socket.on('playerConnected', (players)=>{
+
+        })
+
+    });
+    res.render('partials/player-wait');
 });
 
-router.post('/host', (req,res) => {
-
-})
-
 router.post('/player', (req,res) => {
-    // if (!req.session.player){
-    //     res.redirect('/signup');
-    // }
-    req.session.playerName = req.body.username;
-    req.session.playerCode = req.body.gameCode
-    res.redirect('/lobby/player');
 
 });
 module.exports = router;

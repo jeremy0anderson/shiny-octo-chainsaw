@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const {Host} = require('../../models');
 const bcrypt = require('bcrypt');
+
+
+
 // configure objects to use with conditional rendering
 function redirectUser(req, res, next){
     if (req.session.user){
@@ -57,11 +60,15 @@ const loginRenderOptions={
         };
 
 router.get('/',(req, res)=>{
-        res.render('partials/homepage');
+        res.redirect('/home');
 });
 
-router.get('/signin',(req, res)=>{
-    res.render('partials/auth', loginRenderOptions);
+router.get('/signin', (req, res)=>{
+    if (req.session.signedIn){
+        res.redirect('/home');
+    } else {
+        res.render('partials/auth', loginRenderOptions);
+    }
 });
 router.post("/signin",(req, res)=>{
     Host.findOne({
@@ -76,6 +83,7 @@ router.post("/signin",(req, res)=>{
             // when user signs in, set host name and game code (stored in session).
             req.session.hostName = hostData.username;
             req.session.hostCode = Math.random().toString(36).slice(2,8);
+            req.session.signedIn = true;
             // res.locals.user = req.session.user;
             res.redirect('/home');
         }
@@ -87,7 +95,7 @@ router.post("/signin",(req, res)=>{
 
 
 router.get('/signup', (req, res)=>{
-    if (req.session.user){
+    if (req.session.signedIn){
         res.redirect('/home')
     } else {
         res.render('partials/auth', signUpRenderOptions);
@@ -104,6 +112,7 @@ router.post("/signup",async(req, res)=>{
             // setup hostname and game code (stored in session) on signup
             req.session.hostName = req.body.username;
             req.session.hostCode = Math.random().toString(36).slice(2,8);
+            req.session.signedIn = true;
             //res.locals.user = req.session.user;
             res.redirect('/home');
         })
@@ -116,8 +125,11 @@ router.post("/signup",async(req, res)=>{
 router.get('/join', (req, res)=>{
     res.render('partials/auth', joinRenderOptions);
 });
-router.post('/join', (req, res)=>{
+router.post('/lobby/player', (req, res)=>{
+    req.session.playerName = req.body.username;
+    req.session.playerCode = req.body.gameCode;
 
+    res.redirect('/lobby/player');
 });
 
 module.exports = router;

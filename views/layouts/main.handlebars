@@ -19,22 +19,16 @@
     <div class="columns">
         <div class="column">
             <nav class="navbar background-black has-text-centered" id="navigation">
-                <form method="get" action="/home">
-                    <input type="image"  src="/images/assassination_navbar.png" alt="Assassination: Between Two Kingdoms" id="navigation-img">
+                <form id="home-logo">
+                    <input form="home-logo" formmethod="get" formaction="/" formtarget="_self" type="image" src="/images/assassination_navbar.png" alt="Assassination: Between Two Kingdoms" id="navigation-img" />
                 </form>
-                {{#if signedIn}}
-                <br>
-                <h5 class="text-white mt-6">Welcome, {{signedIn.username}}!</h5>
-                {{/if}}
             </nav>
         </div>
     </div>
+{{!-- body should contain left column and opening section tag for the second column (can include is-hidden for second column if second column is not needed, see auth for example) --}}
 
+    {{{ body }}}
     <section class="columns">
-        
-            {{!-- body should contain left column and opening section tag for the second column (can include is-hidden for second column if second column is not needed, see auth for example) --}}
-            {{{ body }}}
-
             <div id="game-instructions">
                 <h3 class="text-red">
                     THE GAME
@@ -73,7 +67,7 @@
                         <b>Loyalty:</b> Tells you which King you are loyal to. Grey roles are loyal to neither King, they have other objectives.
                     </li>
                     <li>
-                        <b>Ability:</b> Defines special conditions of your role. For an example of an ability, the assassin can kill the King they are not loyal to if the guard is absent. 
+                        <b>Ability:</b> Defines special conditions of your role. For an example of an ability, the assassin can kill the King they are not loyal to if the guard is absent.
                     </li>
                     <li>
                         <b>Winning Conditions:</b> How do you win? This is your answer. Each player has at least 1 but possibly 2 winning conditions. This is your objective. You must meet both objectives in order to win.
@@ -90,7 +84,7 @@
                 </h3>
 
                 {{!-- create role cards rather than a table? --}}
-                
+
                 <div class="columns is-flex-wrap-wrap is-flex-direction-row is-justify-content-center" id="roles">
                     {{#each roles}}
                     <div class="column is-5 box background-white has-text-centered mt-4 card">
@@ -107,7 +101,7 @@
                             Ability: {{ability}}
                         </h4>
                         <h4 class="text-black">
-                            Win Conditions: 
+                            Win Conditions:
                             <ul id="win">
                                 <li>
                                     {{winCondition1}}
@@ -125,8 +119,6 @@
                 </div>
             </div>
         </section>
-    </section>
-</section>
 <footer class="text-white has-text-centered p-5">
     Built by Aaron Jones, Rachel Marriott, Jeremy Anderson, Ilan Timerman, and Lilly Leiran
 </footer>

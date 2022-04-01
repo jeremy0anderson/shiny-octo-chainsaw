@@ -1,5 +1,16 @@
     <!-- game/rules/roles panel -->
-    <section class="column is-12-desktop p-6" >
+    <section class="column is-12-mobile is-12-tablet is-6-desktop text-yellow px-5 p-6" id="host-player-list" >
+        <div class="box" id="player-list">
+            <form id="players-list-display">
+                <ul class="players-list" id="players-list">
+                    {{#each players}}
+                        <li class="checkbox players-list-item">{{this}}</li>
+                    {{/each}}
+                </ul>
+            </form>
+        </div>
+    </section>
+    <section class="column is-12-mobile is-12-tablet p6">
         <div class="box" id="game-info-pannel">
             <nav class="level px-5" id="game-info-menu">
                 <p class="level-item has-text-centered">

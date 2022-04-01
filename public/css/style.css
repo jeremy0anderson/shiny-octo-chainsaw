@@ -208,3 +208,9 @@ footer {
         margin: 0;
     }
 }
+.game-code{
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
