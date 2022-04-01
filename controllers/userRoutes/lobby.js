@@ -1,11 +1,5 @@
 const router = require('express').Router();
 
-function handleConnection(socket, req){
-    socket.username = req.session.user;
-    socket.gameCode = req.session.hostCode;
-    socket.join(req.session.hostCode);
-    console.log(`User: ${socket.username} is in room: ${socket.gameCode}`)
-}
 
 // displays HOST waiting/lobby page if user is signed in otherwise it re-directs
 router.get('/host', (req,res) => {
@@ -13,7 +7,8 @@ router.get('/host', (req,res) => {
         ioHost.on('connection', (socket)=> {
             ///////// setup socket vars ////////
             socket.username = req.session.hostName;
-            handleConnection(socket, req);
+            socket.gameCode = req.session.hostCode;
+            socket.join(req.session.hostCode);
             ioHost.to(req.session.hostCode).emit('hostConnected', JSON.stringify({
                 message: `host: ${socket.username} is in room: ${socket.gameCode}`
             }));
