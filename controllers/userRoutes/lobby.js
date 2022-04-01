@@ -1,35 +1,49 @@
 const router = require('express').Router();
-const {addUser, removeUser, getUser, getUsersInRoom} = require('../../config/handleUsers');
+
+function handleConnection(socket, req){
+    socket.username = req.session.user;
+    socket.gameCode = req.session.hostCode;
+    socket.join(req.session.hostCode);
+    console.log(`User: ${socket.username} is in room: ${socket.gameCode}`)
+}
 
 // displays HOST waiting/lobby page if user is signed in otherwise it re-directs
 router.get('/host', (req,res) => {
-    const GameRoom = Math.random().toString(36).slice(2,8);
-    req.session.hostCode = GameRoom;
-    const io = req.app.get('socketIO').of('/host');
-    io.on('connection', (socket)=> {
-        console.log(socket.id);
-        socket.username = req.session.user;
-        socket.code = req.session.hostCode;
-        socket.join(GameRoom);
-        io.to(GameRoom).emit('hostConnected', "you're in " + GameRoom);
-        socket.on("disconnect", ()=>{
-            io.removeAllListeners();
-            console.log('disconnected');
-        })
-    });
+    const ioHost = req.app.get('socketIO').of('/game');
+        ioHost.on('connection', (socket)=> {
+            ///////// setup socket vars ////////
+            socket.username = req.session.hostName;
+            handleConnection(socket, req);
+            ioHost.to(req.session.hostCode).emit('hostConnected', JSON.stringify({
+                message: `host: ${socket.username} is in room: ${socket.gameCode}`
+            }));
+            socket.on("disconnect", ()=>{
+                ioHost.removeAllListeners();
+                console.log('disconnected');
+            })
 
+    });
     res.render('partials/host-wait', {layout: 'main'});
 
 });
 
 // displays PLAYER waiting/lobby page if player has entered their info otherwise it re-directs
 router.get('/player', (req,res) => {
-    const ioPlayer = req.app.get('socketIO').of('/player');
+    const io = req.app.get('socketIO');
+    const ioPlayer = req.app.get('socketIO').of('/game');
+    const GameRoom = req.session.hostCode;
     ioPlayer.on('connection', (socket)=> {
-        if (req.session.hostCode === req.session.playerCode) {
+        if (req.session.playerCode === GameRoom) {
             socket.username = req.session.playerName;
-            socket.join(req.session.playerCode);
-            ioPlayer.to(req.session.playerCode).emit('hostConnected', "you're in " + GameRoom);
+            console.log(`player: ${socket.username}`)
+            socket.join(GameRoom);
+            ioPlayer.to(GameRoom).emit('playerConnected', JSON.stringify({
+                message: `${socket.username} is in: ${GameRoom}`
+            }));
+            socket.on("disconnect", ()=>{
+                io.removeAllListeners();
+                console.log('disconnected');
+            })
         }
     });
 

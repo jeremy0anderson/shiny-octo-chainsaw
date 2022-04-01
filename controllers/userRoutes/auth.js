@@ -73,7 +73,9 @@ router.post("/signin",(req, res)=>{
             res.status(400)
         }
         if (hostData.checkPassword(req.body.password)) {
-            req.session.user = hostData.username;
+            // when user signs in, set host name and game code (stored in session).
+            req.session.hostName = hostData.username;
+            req.session.hostCode = Math.random().toString(36).slice(2,8);
             // res.locals.user = req.session.user;
             // res.redirect('/home');
         }
@@ -99,7 +101,9 @@ router.post("/signup",async(req, res)=>{
     };
     Host.create(signupBody)
         .then((dbHostData) =>{
-            req.session.user = dbHostData.username;
+            // setup hostname and game code (stored in session) on signup
+            req.session.hostName = dbHostData.username;
+            req.session.hostCode = Math.random().toString(36).slice(2,8);
             //res.locals.user = req.session.user;
             res.redirect('/home');
         })
