@@ -42,4 +42,3 @@ io.of('/game').on('connection', (socket)=>{
 })
 app.set("socketIO", io);
 // app.set('playerSocket', ioPlayer);
-module.exports = app;

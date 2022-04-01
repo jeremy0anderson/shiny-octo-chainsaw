@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const express = require('express');
+
 const {configureSession, configureGame} = require('../../config/connection');
 const dashboardRoute = require('./dashboard');
 const authRoute = require('./auth');

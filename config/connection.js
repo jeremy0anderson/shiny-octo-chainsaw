@@ -1,6 +1,7 @@
 const {Sequelize} = require('sequelize');
 const session = require('express-session');
 const SessionStore = require('express-session-sequelize')(session.Store);
+const express = require('express');
 require('dotenv').config();
 
 let sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PW,
@@ -55,6 +56,8 @@ const configureSession=(app)=> {
         sessionOptions.proxy = true;
         sessionOptions.cookie.secure = true
     }
+    app.use(express.json());
+    app.use(express.urlencoded({extended:true}))
     app.use(session(sessionOptions),
         (req, res, next) => {
             next();

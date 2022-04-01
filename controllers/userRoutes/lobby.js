@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const {Host} = require('../../models');
 
 // displays HOST waiting/lobby page if user is signed in otherwise it re-directs
 router.get('/host', (req,res) => {
