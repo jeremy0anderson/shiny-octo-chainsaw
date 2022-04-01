@@ -32,7 +32,7 @@ const io = new Server(httpApp, {
   transports: ['websocket']
 })
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   httpApp.listen(PORT, () => {
     console.log(`Listening on ${PORT}`);
   });
