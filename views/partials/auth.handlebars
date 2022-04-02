@@ -12,11 +12,17 @@
             <hr class="login-hr">
             <p class="subtitle has-text-white">{{auth.signup.subheader}}</p>
         {{/if}}
+        {{#if auth.join}}
+            <h3 class="title has-text-white">{{auth.join.header}}</h3>
+            <hr class="login-hr">
+            <p class="subtitle has-text-white">{{auth.join.subheader}}</p>
+        {{/if}}
         <div class="box">
             <figure class="avatar">
                 <img src="/images/crown.png" id="login-crown">
             </figure>
-            <form action="{{auth.formAction}}" method="post" target="_self">
+            {{#if auth}}
+            <form action="{{auth.formAction}}" method="{{auth.formMethod}}" target="_self">
                 <div class="field">
                     <div class="control">
                         <input class="input is-large" type="text" placeholder="Username" name="username">
@@ -30,11 +36,28 @@
                     </div>
                 </div>
                 {{/if}}
+
+                {{#if auth.join}}
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-large" type="text" placeholder="Game Code" name="gameCode">
+                        </div>
+                    </div>
+                {{/if}}
+                {{#if auth.signup}}
                 <div class="field">
                     <div class="control">
                         <input class="input is-large" type="password" placeholder="Your Password" name="password">
                     </div>
                 </div>
+                {{/if}}
+                {{#if auth.login}}
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-large" type="password" placeholder="Your Password" name="password">
+                        </div>
+                    </div>
+                {{/if}}
                 {{#if auth.login}}
                 <div class="field">
                     <label class="checkbox">
@@ -48,6 +71,7 @@
                     <i class="fa fa-sign-in" aria-hidden="true"></i>
                 </button>
             </form>
+            {{/if}}
         </div>
         <p id="login-anchors">
             <a href="{{auth.method.oppositeRoute}}" class="text-white">{{auth.method.opposite}}</a> &nbsp;·&nbsp;
@@ -59,4 +83,4 @@
         </p>
     </div>
 </section>
-<section class="column is-12-mobile is-8-tablet is-hidden text-white" id="right-column">
+<section class="column is-12-mobile is-8-tablet is-hidden text-white" id="right-column"></section>

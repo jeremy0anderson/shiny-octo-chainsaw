@@ -11,33 +11,50 @@ function redirectUser(req, res, next){
     next();
 }
 const loginRenderOptions={
-        auth:{
-            login:{
-                header: "Sign In",
-                subheader: "Welcome Back"
-            },
-            method:{
-                type: "Sign In",
-                opposite: "Sign Up",
-                oppositeRoute: "/signup"
-            },
-            formAction: "/signin"
-        }
-    },
-    signUpRenderOptions={
-        auth:{
-            signup:{
-                header: "Sign Up",
-                subheader: "Welcome"
-            },
-            method:{
-                type: "Sign Up",
-                opposite: "Sign In",
-                oppositeRoute: "/signin"
-            },
-            formAction:"/signup"
-        }
-    };
+            auth:{
+                login:{
+                    header: "Sign In",
+                    subheader: "Welcome Back"
+                },
+                method:{
+                    type: "Sign In",
+                    opposite: "Sign Up",
+                    oppositeRoute: "/signup"
+                },
+                formAction: "/signin",
+                formMethod: "post"
+            }
+        },
+        signUpRenderOptions={
+            auth:{
+                signup:{
+                    header: "Sign Up",
+                    subheader: "Welcome"
+                },
+                method:{
+                    type: "Sign Up",
+                    opposite: "Sign In",
+                    oppositeRoute: "/signin"
+                },
+                formAction:"/signup",
+                formMethod:'post'
+            }
+        },
+        joinRenderOptions= {
+            auth: {
+                join: {
+                    header: "Join A Game",
+                    subheader: ""
+                },
+                method: {
+                    type: "Join",
+                    opposite: "Host a Game",
+                    oppositeRoute: "/lobby/host"
+                },
+                formAction: "/lobby/player",
+                formMethod: "post"
+            }
+        };
 
 router.get('/',(req, res)=>{
         res.render('partials/homepage');
@@ -56,7 +73,9 @@ router.post("/signin",(req, res)=>{
             res.status(400)
         }
         if (hostData.checkPassword(req.body.password)) {
-            req.session.user = hostData.username;
+            // when user signs in, set host name and game code (stored in session).
+            req.session.hostName = hostData.username;
+            req.session.hostCode = Math.random().toString(36).slice(2,8);
             // res.locals.user = req.session.user;
             // res.redirect('/home');
         }
@@ -68,11 +87,11 @@ router.post("/signin",(req, res)=>{
 
 
 router.get('/signup', (req, res)=>{
-    // if (req.session.user){
-    //     res.redirect('/home')
-    // } else {
-        res.render('./partials/auth', signUpRenderOptions);
-    // }
+    if (req.session.user){
+        res.redirect('/home')
+    } else {
+        res.render('partials/auth', signUpRenderOptions);
+    }
 });
 router.post("/signup",async(req, res)=>{
     const signupBody = {
@@ -82,7 +101,9 @@ router.post("/signup",async(req, res)=>{
     };
     Host.create(signupBody)
         .then((dbHostData) =>{
-            req.session.user = dbHostData.username;
+            // setup hostname and game code (stored in session) on signup
+            req.session.hostName = dbHostData.username;
+            req.session.hostCode = Math.random().toString(36).slice(2,8);
             //res.locals.user = req.session.user;
             res.redirect('/home');
         })
@@ -91,4 +112,12 @@ router.post("/signup",async(req, res)=>{
             res.status(500).json(err);
         });
 });
+
+router.get('/join', (req, res)=>{
+    res.render('partials/auth', joinRenderOptions);
+});
+router.post('/join', (req, res)=>{
+
+});
+
 module.exports = router;

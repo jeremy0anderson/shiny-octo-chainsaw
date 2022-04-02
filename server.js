@@ -17,36 +17,29 @@ const PORT = process.env.PORT || 4005;
 // configure handlebars
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-// app.set('views', './views');
-// app.set('view engine', 'hbs');
-// app.engine(
-//   'hbs',
-//   exphbs.engine({
-//     extname: 'hbs',
-//     defaultLayout: false,
-//   })
-// );
 
-// configure session/cookies
-
-
-// configure static resources (css, images, js)
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static('public'));
-configureSession(app);
-//configure req parsing
+//middleware
 app.use(express.json());
-app.use(
-  express.urlencoded({
-    extended: false,
-  })
-);
+app.use(express.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // configure routes
 app.use(routes);
+//configure socket.io
+const {Server} = require('socket.io')
+const httpApp = require('http').createServer(app);
+const io = new Server(httpApp, {
+  transports: ['websocket']
+})
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
+  httpApp.listen(PORT, () => {
     console.log(`Listening on ${PORT}`);
   });
 });
+io.of('/game').on('connection', (socket)=>{
+
+})
+app.set("socketIO", io);
+// app.set('playerSocket', ioPlayer);
+module.exports = app;
