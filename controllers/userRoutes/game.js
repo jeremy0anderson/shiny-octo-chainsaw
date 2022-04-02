@@ -60,7 +60,10 @@ router.get('/king',(req, res)=>{
 // displays player's card page with dynamic data, rules, and game card explanation
 router.get('/player',(req, res)=>{
     // will eventually feed in playerGameRender
-    res.render('partials/player', {layout: 'main', roles});
+    res.render('partials/player', {
+        roles,
+        rules:{}
+    });
 });
 
 
