@@ -1,16 +1,29 @@
-# Assassination between two Kingdoms
-# Requirements: 
-* Use Node.js and Express.js to create a RESTful API.
-* Use Handlebars.js as the templating engine.
-* Use MySQL and the Sequelize ORM for the database.
-* Have both GET and POST routes for retrieving and adding new data.
-* Be deployed using Heroku (with data).
-* Use at least one new library, package, or technology that we haven’t discussed.
-* Have a polished UI.
-* Be responsive.
-* Be interactive (i.e., accept and respond to user input).
-* Have a folder structure that meets the MVC paradigm.
-* Include authentication (express-session and cookies).
-* Protect API keys and sensitive information with environment variables.
-* Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class/id naming conventions, indentation, quality comments, etc.).
-* Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
+# Assassination: Between Two Kingdoms
+
+## Description
+
+Assassination: BTK is a web based social deduction game that you can play with friends at a party on your phone. It lets the phone handle the setup and and game execution so that your can immerse yourself into the game experience. It is primarily built out using Java Script, Node Js, Express, Handlebars, Bulma, Heroku and Web Sockets. 
+
+## Installation
+
+Assassination is currently running at https://assassination-multiplayer.herokuapp.com/. No installation is required.
+
+## Usage
+
+Go to https://assassination-multiplayer.herokuapp.com/ and click on the "Host a Game" button. This will allow you to set up a free account. The game will then give you a 6 digit game code that you can share with your friends so that they can join in and play. After that point the game will walk you though how to play and you can enjoy yourself and the game will assign roles and walk you through the different rounds.
+
+    ```md
+    ![A screenshot of the Assassination Home Screen](public\images\home-page-screen-shot.png)
+    ```
+
+## Credits
+
+Contributors to this project have been Jeremy Anderson, Rachel Marriot, Lilly Leiran, Ilan Timberland, and Aaron Jones.
+
+The game was created by Aaron Jones and Rachelle Jones.
+
+
+## How to Contribute
+
+If you are as passionate about this project as we are message me at ernypoo92@gmail.com.
+
