@@ -4,7 +4,7 @@ import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
 //     transports:['websocket'],
 //     reconnectionDelayMax: 10000
 // });
-const socket = io(`${window.location.origin}/host`, {
+const socket = io(`${window.location.origin}/`, {
     forceNew: false,
     transports:['websocket'],
     reconnectionDelayMax: 10000
@@ -15,20 +15,15 @@ const playerList = document.querySelector('#players-list');
 socket.on('connected', (socket)=>{
     console.log(socket.id);
 })
-socket.on('playerConnected',(playerStats)=>{
-       playerDetails.push(playerStats);
-       let detailString = "Player: "+ playerStats.name +" joined room: "+playerStats.room;
-       players.push(detailString);
-       console.log(players);
+socket.on('playerConnected',(players)=>{
        players.forEach(str =>{
            let playerItem = document.createElement('li');
            playerItem.textContent = str;
            playerList.appendChild(playerItem);
        })
 });
-socket.on('playerDisconnected', (socketName, playersArr)=>{
-
-    console.log(playersArr);
+socket.on('deletePlayer', (removed)=>{
+    console.log(removed);
 })
 
 export default socket;

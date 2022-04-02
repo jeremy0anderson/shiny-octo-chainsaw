@@ -3,7 +3,7 @@ const router = require('express').Router();
 /// configure io / appropriate namespaces
 
 let players = [];
-let connections = new Set();
+let connections =[]
 
 
 function filterByUser(socket, array){
@@ -18,32 +18,33 @@ function hostNSP(req, res, next){
 // displays HOST waiting/lobby page if user is signed in otherwise it re-directs
 router.get('/host', (req,res) => {
     const io = req.app.get('socketIO');
-    const hostNSP = io.of('/host');
-    const playerNSP = io.of('/player')
     if (req.session.signedIn === true) {
-
 
         let user = req.session.hostName;
         let code = req.session.hostCode;
-        hostNSP.on('connection', (socket) => {
+        io.on('connection', (socket) => {
             //add connection to set (makes it easier to remove on disconnect) //
             ///////// setup socket vars ////////
-            socket.username = user;
+            socket.name = user;
             socket.gameCode = code;
             //// join the same game room as the host
-            socket.join(code);
 
-            connections.add(socket)
+            let playerStats = {
+                id: socket.id,
+                name: socket.name,
+                room: socket.code
+            }
+            connections.push(socket.name)
             console.log(connections);
-            socket.to(socket.gameCode).emit('playerConnected', user);
+            io.emit('playerConnected', connections);
             socket.on("disconnect", () => {
-                connections.delete(socket);
+                connections = connections.filter((c) =>{
+                    return c !== socket.name
+                });
+                io.emit('deletePlayer', connections);
+                io.removeAllListeners();
                 // players = players.filter(p=> p.includes(socket.username) === false);
                 // ioHost.to(code).emit('removed', players);
-                io.in(code).emit('userLeft', connections);
-                let newPlayers = filterByUser(socket, players);
-                console.log(newPlayers);
-                socket.removeAllListeners();
                 console.log('disconnected');
             })
         });
