@@ -12,9 +12,9 @@ Assassination is currently running at https://assassination-multiplayer.herokuap
 
 Go to https://assassination-multiplayer.herokuapp.com/ and click on the "Host a Game" button. This will allow you to set up a free account. The game will then give you a 6 digit game code that you can share with your friends so that they can join in and play. After that point the game will walk you though how to play and you can enjoy yourself and the game will assign roles and walk you through the different rounds.
 
-    ```md
+
     ![A screenshot of the Assassination Home Screen](public\images\home-page-screen-shot.png)
-    ```
+
 
 ## Credits
 
