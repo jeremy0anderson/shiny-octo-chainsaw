@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 
 // configure objects to use with conditional rendering
 function redirectUser(req, res, next){
-    if (req.session.user){
+    if (req.session.signedIn){
         res.redirect('/home');
     } else{
         res.redirect('/signin');
