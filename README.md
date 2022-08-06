@@ -20,7 +20,7 @@ Go to https://assassination-multiplayer.herokuapp.com/ and click on the "Host a 
 
 ## Credits
 
-Contributors to this project have been Jeremy Anderson, Rachel Marriot, Lilly Leiran, Ilan Timberland, and Aaron Jones.
+Contributors to this project have been Jeremy Anderson, Rachel Marriot, Lilly Leiran, Ilan Timerman, and Aaron Jones.
 
 The game was created by Aaron Jones and Rachelle Jones.
 
